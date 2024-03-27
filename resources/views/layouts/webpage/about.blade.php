@@ -11,9 +11,9 @@
       
       {{-- <img src="my_dashboard/img/user.jpg" class="img-fluid" alt=""> --}}
       @if($user->avatar)
-      <img src={{ asset('storage/'. $user->avatar) }} class="img-fluid">
+      <img src={{ asset('storage/'. $user->avatar) }} class="img-fluid" style="width: 100%; height:100%;">
       @else
-      <img src={{ asset("my_dashboard/img/user.jpg") }} class="img-fluid"></td>
+      <img src={{ asset("my_dashboard/img/user.jpg") }} class="img-fluid" style="width: 100%; height: 100%;></td>
       @endif
     </div>
     

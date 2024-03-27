@@ -11,7 +11,15 @@
             @csrf
             @method('DELETE')
           <div class="modal-body">
-              <p>Are you sure you want to delete <span class="text-danger">{{ '"' . $users->first_name . ' ' . $users->middle_name . '"' }}</span>?</p>
+            <div class="text-center mb-3">
+                @if($users->avatar)
+                <img id="profilePicturePreview{{$users->id}}" src="{{asset('storage/' . $users->avatar)}}" class="img-fluid rounded-circle" alt="Avatar" style="width: 130px; height:130px;">
+                @else
+                <img id="profilePicturePreview{{$users->id}}" src="my_dashboard/img/user.jpg" class="img-fluid rounded-circle" alt="Avatar" style="width: 130px; height:130px;">
+                @endif
+                <p>Are you sure you want to delete <span class="text-danger">{{ '"' . $users->first_name . ' ' . $users->middle_name . '"' }}</span>?</p>
+            </div>
+              
           </div>
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

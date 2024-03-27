@@ -16,7 +16,7 @@
                 @if(Auth::user()->avatar)
                 <img id="profilePicturePreview" src={{asset('storage/' . Auth()->user()->avatar)}} class="img-fluid rounded-circle" alt="Avatar" style="width: 150px; height:150px;">
                 @else
-                <img id="profilePicturePreview" src={{asset("my_dashboard/img/user.jpg")}} class="img-fluid rounded-circle" alt="Avatar" width="150">
+                <img id="profilePicturePreview" src={{asset("my_dashboard/img/user.jpg")}} class="img-fluid rounded-circle" alt="Avatar" style="width: 150px; height:150px;">
                 @endif
             </div>
 

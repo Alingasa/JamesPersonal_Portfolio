@@ -32,7 +32,7 @@
                         @if($users->avatar)
                         <td><img src="{{ asset('storage/'. $users->avatar) }}" alt="Default Profile Picture" style="width: 40px; height:40px;" class="img-profile rounded-circle"></td>
                         @else
-                        <td><img src="{{ asset('my_dashboard/img/user.jpg') }}" alt="Default Profile Picture" style="width: 40px;" class="img-profile rounded-circle"></td>
+                        <td><img src="{{ asset('my_dashboard/img/user.jpg') }}" alt="Default Profile Picture" style="width: 40px; height:40px;" class="img-profile rounded-circle"></td>
                         @endif
                         <td>{{$users->first_name}}</td>
                         <td>{{$users->middle_name}}</td>

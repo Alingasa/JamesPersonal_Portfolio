@@ -13,7 +13,7 @@
                       @if($interests->image_logo)
                       <img id="profilePicturePreview{{$interests->id}}" src="{{asset('storage/' . $interests->image_logo)}}" class="img-fluid rounded-square" alt="Avatar" style="width: 150px; height:150px;">
                       @else
-                      <img id="profilePicturePreview{{$interests->id}}" src="my_dashboard/img/user.jpg" class="img-fluid rounded-square" alt="Avatar" width="150">
+                      <img id="profilePicturePreview{{$interests->id}}" src="my_dashboard/img/user.jpg" class="img-fluid rounded-square" alt="Avatar" style="width: 150px; height:150px;">
                       @endif
                   </div>
                   <div class="text-center mb-3">

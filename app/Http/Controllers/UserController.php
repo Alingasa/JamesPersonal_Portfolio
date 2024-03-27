@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -72,7 +73,7 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Request $request,  User $user)
+    public function edit(Request $request,  User $user): RedirectResponse
     {
         //
         $data = $request->validate([
@@ -80,7 +81,8 @@ class UserController extends Controller
         ]);
 
         $user->update($data);
-        return view('users.user_password.index', compact('user'));
+
+        return redirect()->route('user.create')->with('success', 'User created successfully.');
     }
 
     /**

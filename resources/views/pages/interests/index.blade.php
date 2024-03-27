@@ -23,9 +23,9 @@
                         <th scope="row">{{$interests->id}}</th>
                  
                             @if($interests->image_logo)
-                            <td><img src={{ asset("storage/". $interests->image_logo) }} alt="Default Profile Picture" style="width: 60px;" class="img-profile rounded-square"></td>
+                            <td><img src={{ asset("storage/". $interests->image_logo) }} alt="Default Profile Picture" style="width: 60px; height:60px;" class="img-profile rounded-square"></td>
                             @else
-                            <td><img src={{ asset("my_dashboard/img/user.jpg") }} alt="Default Profile Picture" style="width: 60px;" class="img-profile rounded-square"></td>
+                            <td><img src={{ asset("my_dashboard/img/user.jpg") }} alt="Default Profile Picture" style="width: 60px; height:60px;" class="img-profile rounded-square"></td>
                             @endif
                         <td>{{$interests->name}}</td>
                          <td>
