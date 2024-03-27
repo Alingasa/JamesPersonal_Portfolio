@@ -19,9 +19,9 @@
       <div class="nav-item dropdown">
         <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
           @if(Auth::user()->avatar)
-          <img class="rounded-circle me-lg-2" src="{{asset('storage/' . Auth()->user()->avatar)}}" alt="" style="width: 40px; height: 40px;">
+          <img class="rounded-circle me-lg-2" src={{asset('storage/' . Auth()->user()->avatar)}} alt="" style="width: 40px; height: 40px;">
           @else
-          <img class="rounded-circle me-lg-2" src="my_dashboard/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+          <img class="rounded-circle me-lg-2" src={{asset("my_dashboard/img/user.jpg")}} alt="" style="width: 40px; height: 40px;">
           @endif
           
           <span class="d-none d-lg-inline-flex">{{Auth::user()->first_name. " ".Auth::user()->middle_name . " ". Auth::user()->last_name}}</span>

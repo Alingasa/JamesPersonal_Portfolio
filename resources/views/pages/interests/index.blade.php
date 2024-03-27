@@ -12,7 +12,7 @@
                 <thead>
                     <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Role</th>
+                        <th scope="col">Logo</th>
                         <th scope="col">Avatar</th>
                         <th scope="col">First Name</th>
                         <th scope="col">Middle Name</th>
@@ -22,38 +22,36 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($user as $users)
+                    
                     <tr>
-                        <th scope="row">{{$users->id}}</th>
-                       @if($users->role == 'admin')
-                       <td class="text-warning">{{$users->role}}</td>
-                       @else
-                       <td class="text-success">{{$users->role}}</td>
-                       @endif
-                        @if($users->avatar)
-                        <td><img src={{ asset('storage/'. $users->avatar) }} alt="Default Profile Picture" style="width: 40px; height:40px;" class="img-profile rounded-circle"></td>
-                        @else
-                        <td><img src={{ asset("my_dashboard/img/user.jpg") }} alt="Default Profile Picture" style="width: 40px;" class="img-profile rounded-circle"></td>
-                        @endif
-                        <td>{{$users->first_name}}</td>
-                        <td>{{$users->middle_name}}</td>
-                        <td>{{$users->last_name}}</td>
-                        <td>{{$users->email}}</td>
+                        <th scope="row"></th>
+                       
+                       <td class="text-warning"></td>
+                      
+             
+                        <td><img src='' alt="Default Profile Picture" style="width: 40px; height:40px;" class="img-profile rounded-circle"></td>
+             
+                        
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
+                       <td></td>
                         <td>
                             <!-- Edit button with icon -->
                             <div class="d-flex">
-                                <a href="#" class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editUserModal{{$users->id}}">
+                                <a href="#" class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editUserModal">
                                     <i class="fas fa-edit"></i> <!-- Font Awesome edit icon -->
                                 </a>    
-                                @include('users.edit')                      
-                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{$users->id}}">
+                                                
+                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal">
                                     <i class="fas fa-trash"></i> <!-- Font Awesome edit icon -->
                                 </a>
-                                @include('users.delete')
+                         
                             </div>
                         </td>
                     </tr>
-                    @endforeach
+                
                 </tbody>
             </table>
         </div>

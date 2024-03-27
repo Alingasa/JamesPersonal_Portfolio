@@ -11,11 +11,12 @@
               <form id="profileForm" action="{{ route('profile.update', auth()->user()->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
+
               <div class="text-center mb-3">
                 @if(Auth::user()->avatar)
-                <img id="profilePicturePreview" src="{{asset('storage/' . Auth()->user()->avatar)}}" class="img-fluid rounded-circle" alt="Avatar" style="width: 150px; height:150px;">
+                <img id="profilePicturePreview" src={{asset('storage/' . Auth()->user()->avatar)}} class="img-fluid rounded-circle" alt="Avatar" style="width: 150px; height:150px;">
                 @else
-                <img id="profilePicturePreview" src="my_dashboard/img/user.jpg" class="img-fluid rounded-circle" alt="Avatar" width="150">
+                <img id="profilePicturePreview" src={{asset("my_dashboard/img/user.jpg")}} class="img-fluid rounded-circle" alt="Avatar" width="150">
                 @endif
             </div>
 
@@ -105,8 +106,8 @@
             <input type="text" class="form-control" id="middleName" name="passion" value="{{Auth::user()->passion}}" placeholder="Enter your middle name" required>
         </div>
         <div class="text-center mb-3">
-            <label for="middleName" class="form-label"><strong>Description</strong></label>
-            <input type="text" class="form-control text-center" id="middleName" name="description" value="{{Auth::user()->description}}" placeholder="Enter your middle name" style="height:100%;" required>
+                <label for="description" class="form-label"><strong>Description</strong></label>
+                <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter your description">{{ Auth::user()->description }}</textarea>
         </div>
     
                       <!-- Add more fields as needed -->

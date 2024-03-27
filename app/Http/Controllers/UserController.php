@@ -24,6 +24,8 @@ class UserController extends Controller
     public function create()
     {
         //
+        $user = User::get();
+        return view('users.user_password.index', compact('user'));
     }
 
     /**
@@ -52,7 +54,7 @@ class UserController extends Controller
         }
         
         // Create the user with the validated data
-        User::create($data);
+        
         
         return redirect()->route('user.index')->with('success', 'User created successfully.');
         
@@ -70,10 +72,15 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(User $user)
+    public function edit(Request $request,  User $user)
     {
         //
-    
+        $data = $request->validate([
+            'password' => 'required',
+        ]);
+
+        $user->update($data);
+        return view('users.user_password.index', compact('user'));
     }
 
     /**
@@ -82,16 +89,44 @@ class UserController extends Controller
     public function update(Request $request,  User $user)
     {
         //
-        $request->update($user);
-        return dd('aw');
+        $data = $request->validate([
+            'role' => 'required',
+            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'first_name' => 'required',
+            'middle_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required|email',
+        ]);
+         
+        if ($request->hasFile('avatar')) {
+            // Delete the previous avatar if it exists
+            if ($user->avatar) {
+                Storage::disk('public')->delete($user->avatar);
+            }
+        
+            $avatar = $request->file('avatar');
+            $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
+            $data['avatar'] = $avatarPath;
+        } else {
+            // No file provided, retain the existing avatar
+            $data['avatar'] = $user->avatar;
+        }
+        $user->update($data);
+        return redirect()->route('user.index')->with('success', 'User created successfully.');
         
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
         //
+        $user->delete();
+        
+        return redirect()->route('user.index')
+        ->with('delete','User deleted successfully');
+
     }
+
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Front_endController;
+use App\Http\Controllers\InterestController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
@@ -32,4 +33,6 @@ Route::resource('/', Front_endController::class);
 Route::resource('user', UserController::class);
 
 Route::resource('profile', ProfileController::class);
+
+Route::resource('interests', InterestController::class);
 
