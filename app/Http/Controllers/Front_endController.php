@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Interest;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -15,11 +16,14 @@ class Front_endController extends Controller
     {
         //
         $users = DB::table('users')->where('role', 'admin')->get();
-        
+
         foreach ($users as $user) {
             $user->birth_date = Carbon::parse($user->birth_date)->isoFormat('MMMM DD, YYYY');
         }
-        return view('welcome',compact('users'));
+
+        $interest = DB::table('interests')->get();
+        
+        return view('welcome',compact('users', 'interest'));
     }
 
     /**

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Interest;
+use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class InterestController extends Controller
 {
@@ -12,7 +16,9 @@ class InterestController extends Controller
     public function index()
     {
         //
-        return view('pages.interests.index');
+        $interest = Interest::get();
+
+        return view('pages.interests.index', compact('interest'));
     }
 
     /**
@@ -26,9 +32,25 @@ class InterestController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         //
+        $data = $request->validate([
+            'image_logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'name' => 'required',
+        ]);
+
+        if ($request->hasFile('image_logo')) {
+            $avatar = $request->file('image_logo');
+            $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
+            $data['image_logo'] = $avatarPath;
+        } else {
+            // No file provided, set avatar to null or any default value as needed
+            $data['image_logo'] = null;
+        }
+        
+        Interest::create($data);
+        return redirect()->route('interests.index')->with('success', 'User created successfully.');
     }
 
     /**
@@ -50,16 +72,38 @@ class InterestController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Interest $interest)
     {
         //
+        $data = $request->validate([
+            'image_logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'name' => 'required',
+        ]);
+         
+        if ($request->hasFile('image_logo')) {
+            // Delete the previous avatar if it exists
+            if ($interest->image_logog) {
+                Storage::disk('public')->delete($interest->image_logo);
+            }
+        
+            $avatar = $request->file('image_logo');
+            $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
+            $data['image_logo'] = $avatarPath;
+        } else {
+            // No file provided, retain the existing avatar
+            $data['image_logo'] = $interest->image_logo;
+        }
+        $interest->update($data);
+        return redirect()->route('interests.index')->with('success', 'User created successfully.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Interest $interest)
     {
         //
+        $interest->delete();
+        return redirect()->route('interests.index')->with('success', 'User created successfully.');
     }
 }

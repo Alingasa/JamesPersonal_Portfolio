@@ -15,7 +15,7 @@ return new class extends Migration
         Schema::create('interests', function (Blueprint $table) {
             $table->id();
             $table->string('image_logo')->nullable();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->rememberToken();
             $table->timestamps();
         });

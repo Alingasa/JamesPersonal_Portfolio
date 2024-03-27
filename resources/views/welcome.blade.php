@@ -17,7 +17,7 @@
      @include('layouts.webpage.about')
     <!-- End About Me -->
 
-  
+    @endforeach
 
     <!-- ======= Skills  ======= -->
    {{-- @include('layouts.webpage.skills') --}}
@@ -29,40 +29,15 @@
       <div class="section-title">
         <h2>Interests</h2>
       </div>
-
+    
       <div class="row">
-        <div class="col-lg-3 col-md-4">
-          <div class="icon-box">
-            <i class="fab fa-laravel" style="color: red;"></i>
-            <h3>Laravel</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="fab fa-php" style="color: #5578ff;"></i>
-            <h3>PHP</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-md-0">
-          <div class="icon-box">
-            <i class="fas fa-database" style="color: #e80368;"></i>
-            <h3>Database</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4 mt-lg-0">
-          <div class="icon-box">
-            <i class="bi bi-file-code" style="color: yellow;"></i>
-            <h3>JavaScript</h3>
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-4 mt-4">
-          <div class="icon-box">
-            <i class="bi bi-bootstrap" style="color: #47aeff;"></i>
-            <h3>Bootstrap</h3>
-          </div>
-        </div>
         
-    </div><!-- End Interests -->
+    @foreach($interest as $interests)
+    @include('layouts.webpage.interest')
+  
+    @endforeach
+    </div>
+    <!-- End Interests -->
 
 
   </section><!-- End About Section -->
@@ -151,7 +126,7 @@
     <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/personal-free-resume-bootstrap-template/ -->
     Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
   </div>
-  @endforeach
+
   <!-- Vendor JS Files -->
   <script src="porfolio/assets/vendor/purecounter/purecounter_vanilla.js"></script>
   <script src="porfolio/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
