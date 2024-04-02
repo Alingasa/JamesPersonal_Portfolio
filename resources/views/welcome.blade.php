@@ -44,8 +44,21 @@
 
   <!-- ======= Resume Section ======= -->
   <section id="skills" class="resume">
-    <div class="container">
+    <div class="skills container">
+
+      <div class="section-title">
+        <h2>Skills</h2>
+      </div>
+      <div class="row skills-content">
+          
+      @foreach ($skill as $skills)
      @include('layouts.webpage.skills')
+     
+     @endforeach
+    </div>
+
+  </div>
+
       {{-- <div class="section-title">
         <h2>Resume</h2>
         <p>Check My Resume</p>
@@ -102,8 +115,9 @@
   </section><!-- End Resume Section -->
 
   <!-- ======= Experiences Section ======= -->
+ 
    @include('layouts.webpage.experience')
-
+ 
   <!-- End Experiences Section -->
 
   <!-- ======= Webinar Section ======= -->
@@ -128,17 +142,5 @@
   </div>
 
   <!-- Vendor JS Files -->
-  <script src="porfolio/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="porfolio/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="porfolio/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="porfolio/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="porfolio/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="porfolio/assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="porfolio/assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="porfolio/assets/js/main.js"></script>
-
-</body>
-
-</html>
+  
+  @include('layouts.webpage.footer')

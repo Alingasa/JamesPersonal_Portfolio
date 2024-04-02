@@ -1,9 +1,15 @@
 <?php
 
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\Front_endController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebinarController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -35,4 +41,16 @@ Route::resource('user', UserController::class);
 Route::resource('profile', ProfileController::class);
 
 Route::resource('interests', InterestController::class);
+
+Route::resource('skills', SkillController::class);
+
+Route::resource('experiences', ExperienceController::class );
+
+Route::resource('webinars', WebinarController::class);
+
+Route::resource('contacts', ContactController::class);
+
+Route::resource('blogs', BlogController::class);
+
+Route::resource('category', CategoryController::class);
 

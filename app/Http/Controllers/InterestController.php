@@ -42,7 +42,7 @@ class InterestController extends Controller
 
         if ($request->hasFile('image_logo')) {
             $avatar = $request->file('image_logo');
-            $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
+            $avatarPath = $avatar->store('img', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
             $data['image_logo'] = $avatarPath;
         } else {
             // No file provided, set avatar to null or any default value as needed

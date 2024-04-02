@@ -83,10 +83,6 @@ class ProfileController extends Controller
   
         // Find the user by ID
         if ($request->hasFile('avatar')) {
-            // Delete the previous avatar if it exists
-            if ($profile->avatar) {
-                Storage::disk('public')->delete($profile->avatar);
-            }
         
             $avatar = $request->file('avatar');
             $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk

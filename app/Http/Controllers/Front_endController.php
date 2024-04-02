@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Interest;
+use App\Models\Message;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +24,11 @@ class Front_endController extends Controller
 
         $interest = DB::table('interests')->get();
         
-        return view('welcome',compact('users', 'interest'));
+        $skill = DB::table('skills')->get();
+
+        $experience = DB::table('experiences')->get();
+
+        return view('welcome',compact('users', 'interest', 'skill', 'experience'));
     }
 
     /**
@@ -32,6 +37,8 @@ class Front_endController extends Controller
     public function create()
     {
         //
+        $message = Message::get();
+        return view('pages.messages.index', compact('message'));
     }
 
     /**
@@ -40,6 +47,7 @@ class Front_endController extends Controller
     public function store(Request $request)
     {
         //
+        
     }
 
     /**
