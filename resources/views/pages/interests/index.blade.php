@@ -20,7 +20,7 @@
                 <tbody>
                     @foreach ($interest as $interests)
                     <tr>
-                        <th scope="row">{{$interests->id}}</th>
+                        <th scope="row">{{++$i}}</th>
                  
                             @if($interests->image_logo)
                             <td><img src={{ asset("storage/". $interests->image_logo) }} alt="Default Profile Picture" style="width: 60px; height:60px;" class="img-profile rounded-square"></td>
@@ -29,7 +29,7 @@
                             @endif
                         <td>{{$interests->name}}</td>
                          <td>
-                            <!-- Edit button with icon -->
+                         
                             <div class="d-flex">
                                 <a href="#" class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editInterestModal{{$interests->id}}">
                                     <i class="fas fa-edit"></i> <!-- Font Awesome edit icon -->
@@ -48,6 +48,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pagination"> 
+                    {{ $interest->links() }}
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

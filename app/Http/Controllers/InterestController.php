@@ -16,9 +16,9 @@ class InterestController extends Controller
     public function index()
     {
         //
-        $interest = Interest::get();
+        $interest = Interest::simplePaginate(5);
 
-        return view('pages.interests.index', compact('interest'));
+        return view('pages.interests.index', compact('interest'))->with('i', (request()->input('page', 1) -1 )* 5);
     }
 
     /**
@@ -42,10 +42,10 @@ class InterestController extends Controller
 
         if ($request->hasFile('image_logo')) {
             $avatar = $request->file('image_logo');
-            $avatarPath = $avatar->store('img', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
+            $avatarPath = $avatar->store('img', 'public'); 
             $data['image_logo'] = $avatarPath;
         } else {
-            // No file provided, set avatar to null or any default value as needed
+            
             $data['image_logo'] = null;
         }
         
@@ -81,16 +81,16 @@ class InterestController extends Controller
         ]);
          
         if ($request->hasFile('image_logo')) {
-            // Delete the previous avatar if it exists
+           
             if ($interest->image_logog) {
                 Storage::disk('public')->delete($interest->image_logo);
             }
         
             $avatar = $request->file('image_logo');
-            $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
+            $avatarPath = $avatar->store('avatars', 'public'); 
             $data['image_logo'] = $avatarPath;
         } else {
-            // No file provided, retain the existing avatar
+           
             $data['image_logo'] = $interest->image_logo;
         }
         $interest->update($data);
@@ -104,6 +104,6 @@ class InterestController extends Controller
     {
         //
         $interest->delete();
-        return redirect()->route('interests.index')->with('success', 'User created successfully.');
+        return redirect()->route('interests.index')->with('delete', 'User created successfully.');
     }
 }

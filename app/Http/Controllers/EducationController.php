@@ -13,8 +13,8 @@ class EducationController extends Controller
     public function index()
     {
         //
-        $education = Education::get();
-        return view('pages.educations.index', compact('education'))->with('i');
+        $education = Education::simplePaginate(5);
+        return view('pages.educations.index', compact('education'))->with('i', (request()->input('page', 1)- 1) * 5);
     }
 
     /**
@@ -39,7 +39,7 @@ class EducationController extends Controller
         ]);
 
         Education::create($data);
-        return redirect()->route('education.index');
+        return redirect()->route('education.index')->with('success', 'added successfully!');
     }
 
     /**
@@ -72,7 +72,7 @@ class EducationController extends Controller
         ]);
        
         $education->update($data);
-        return redirect()->route('education.index');
+        return redirect()->route('education.index')->with('success', 'updated successfully!');
     }
 
     /**
@@ -82,6 +82,6 @@ class EducationController extends Controller
     {
         //
         $education->delete();
-        return redirect()->route('education.index');
+        return redirect()->route('education.index')->with('delete' , 'deleted successfully!');
     }
 }

@@ -5,6 +5,9 @@
               <h5 class="modal-title text-danger" id="editUserModalLabel{{$users->id}}">Change Password ?</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+          @if($errors->any())
+          @include('layouts.sweetalert.error')
+          @endif
           <form action="{{route('user.edit' , $users->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
@@ -21,11 +24,11 @@
           </div>
             <div class="mb-3">
               <label for="firstName" class="form-label{{$users->id}}">Password</label>
-              <input type="password" class="form-control" id="firstName" name="password" required placeholder="Enter New Password" >
+              <input type="password" class="form-control @error('password') is-invalid @enderror" id="firstName" name="password" placeholder="Enter New Password" >
             </div>
             <div class="mb-3">
               <label for="firstName" class="form-label{{$users->id}}">Password</label>
-              <input type="password" class="form-control" id="firstName" name="confirmation-password" required placeholder="Confirm Password" >
+              <input type="password" class="form-control" id="firstName" name="confirmation-password" placeholder="Confirm Password" >
             </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

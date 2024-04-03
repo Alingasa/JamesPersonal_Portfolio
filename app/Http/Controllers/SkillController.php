@@ -16,8 +16,8 @@ class SkillController extends Controller
     public function index()
     {
         //
-        $skill = Skill::get();
-        return  view('pages.skills.index', compact('skill'));
+        $skill = Skill::simplePaginate(5);
+        return  view('pages.skills.index', compact('skill'))->with('i', (request()->input('pages', 1)- 1) * 5);
     }
 
     /**
@@ -40,7 +40,7 @@ class SkillController extends Controller
         ]);
      
         Skill::create($data);
-        return redirect()->route('skills.index');
+        return redirect()->route('skills.index')->with('success', 'added successfully');
     }
 
     /**
@@ -81,6 +81,6 @@ class SkillController extends Controller
     {
        $skill->delete();
        
-       return redirect()->route('skills.index');
+       return redirect()->route('skills.index')->with('delete', 'deleted successfully');
     }
 }

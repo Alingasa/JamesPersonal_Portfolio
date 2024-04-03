@@ -26,16 +26,6 @@
           <!-- End Example Blog Post -->
 
           <!-- Example Blog Post -->
-          <div class="col-md-6">
-            <div class="card">
-              <img src="path_to_your_image_2" class="card-img-top" alt="Blog Post 2">
-              <div class="card-body">
-                <h5 class="card-title">The Art of Mindfulness</h5>
-                <p class="card-text">Learn how practicing mindfulness can enhance your life and reduce stress.</p>
-                <a href="#" class="btn btn-outline-primary">Read More</a>
-              </div>
-            </div>
-          </div>
           <!-- End Example Blog Post -->
 
           <!-- Repeat the above code for each blog post dynamically -->
@@ -50,14 +40,10 @@
           <h3>Featured Categories</h3>
           <ul class="list-unstyled">
             <li><a href="#">Nature</a></li>
-            <li><a href="#">Mindfulness</a></li>
-            <!-- Add more categories dynamically -->
           </ul>
           <h3>Recent Posts</h3>
           <ul class="list-unstyled">
             <li><a href="#">The Benefits of Outdoor Activities</a></li>
-            <li><a href="#">How to Practice Gratitude Daily</a></li>
-            <!-- Add more recent posts dynamically -->
           </ul>
         </div>
       </div>

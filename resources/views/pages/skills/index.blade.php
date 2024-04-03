@@ -22,7 +22,7 @@
                        
                    
                     <tr>
-                        <th scope="row">{{$skills->id}}</th>
+                        <th scope="row">{{++$i}}</th>
                  
                         <td>{{$skills->skill_name}}</td>
                         <td>{{$skills->percentage}}%</td>

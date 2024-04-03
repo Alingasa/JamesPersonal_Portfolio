@@ -81,13 +81,13 @@ class ProfileController extends Controller
             'youtube_url' => 'required',
         ]);
   
-        // Find the user by ID
+      
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-            $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
+            $avatarPath = $avatar->store('avatars', 'public'); 
             $data['avatar'] = $avatarPath;
         } else {
-            // No file provided, retain the existing avatar
+    
             $data['avatar'] = $profile->avatar;
         }
         

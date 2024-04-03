@@ -15,8 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::get();
-        return view('users.index', compact('user'))->with('i');
+        $user = User::simplePaginate(5);
+        return view('users.index', compact('user'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -25,8 +25,8 @@ class UserController extends Controller
     public function create()
     {
         //
-        $user = User::get();
-        return view('users.user_password.index', compact('user'));
+        $user = User::simplePaginate(5);
+        return view('users.user_password.index', compact('user'))->with('i', (request()->input('page', 1)- 1) * 5);
     }
 
     /**
@@ -47,14 +47,14 @@ class UserController extends Controller
         
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-            $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
+            $avatarPath = $avatar->store('avatars', 'public'); 
             $data['avatar'] = $avatarPath;
         } else {
-            // No file provided, set avatar to null or any default value as needed
+       
             $data['avatar'] = null;
         }
         
-        // Create the user with the validated data
+      
         User::create($data);
         
         return redirect()->route('user.index')->with('success', 'User created successfully.');
@@ -101,16 +101,12 @@ class UserController extends Controller
         ]);
          
         if ($request->hasFile('avatar')) {
-            // Delete the previous avatar if it exists
-            if ($user->avatar) {
-                Storage::disk('public')->delete($user->avatar);
-            }
         
             $avatar = $request->file('avatar');
-            $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
+            $avatarPath = $avatar->store('avatars', 'public');  
             $data['avatar'] = $avatarPath;
         } else {
-            // No file provided, retain the existing avatar
+           
             $data['avatar'] = $user->avatar;
         }
         $user->update($data);

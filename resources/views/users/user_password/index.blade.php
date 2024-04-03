@@ -23,7 +23,7 @@
                 <tbody>
                     @foreach ($user as $users)
                     <tr>
-                        <th scope="row">{{$users->id}}</th>
+                        <th scope="row">{{++$i}}</th>
                        @if($users->role == 'admin')
                        <td class="text-warning">{{$users->role}}</td>
                        @else
@@ -51,6 +51,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pagination"> 
+                    {{ $user->links() }}
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

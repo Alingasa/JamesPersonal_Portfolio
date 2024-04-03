@@ -50,6 +50,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pagination"> 
+                    {{ $education->links() }}
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

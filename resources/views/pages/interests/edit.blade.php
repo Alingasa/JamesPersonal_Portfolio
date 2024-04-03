@@ -5,6 +5,9 @@
               <h5 class="modal-title" id="editUserModalLabel{{$interests->id}}">Edit Interest</h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
+          @if($errors->any())
+            @include('layouts.sweetalert.error')
+          @endif
           <form id="editUserForm{{$interests->id}}" action="{{ route('interests.update', $interests->id) }}" method="POST" enctype="multipart/form-data">
               @csrf
               @method('PUT')
@@ -24,7 +27,7 @@
                   </div>
                   <div class="mb-3">
                       <label for="first_name{{$interests->id}}" class="form-label">Name</label>
-                      <input type="text" class="form-control" id="first_name{{$interests->id}}" name="name" value="{{$interests->name}}">
+                      <input type="text" class="form-control @error('name') is-invalid @enderror" id="first_name{{$interests->id}}" name="name" value="{{$interests->name}}">
                   </div>  
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

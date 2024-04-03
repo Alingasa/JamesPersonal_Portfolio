@@ -47,6 +47,7 @@ class HomeController extends Controller
             'totalSkills',
             'totalExperience',
             'totalWebinar',
-            'totalBlog'));
+            'totalBlog'
+        ));
     }
 }

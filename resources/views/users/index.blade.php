@@ -4,7 +4,7 @@
 <div class="col-12">
     <div class="bg-light rounded h-100 p-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h6 class="mb-0">Users</h6>
+            <h6 class="mb-0"><i class="fa fa-users me-2"></i>Users</h6>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addUserModal">Add User</button>
         </div>
         <div class="table-responsive">
@@ -43,14 +43,14 @@
                         <td>{{$users->last_name}}</td>
                         <td>{{$users->email}}</td>
                         <td>
-                            <!-- Edit button with icon -->
+                           
                             <div class="d-flex">
                                 <a href="#" class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editUserModal{{$users->id}}">
-                                    <i class="fas fa-edit"></i> <!-- Font Awesome edit icon -->
+                                    <i class="fas fa-edit"></i> 
                                 </a>    
                                 @include('users.edit')                      
                                 <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{$users->id}}">
-                                    <i class="fas fa-trash"></i> <!-- Font Awesome edit icon -->
+                                    <i class="fas fa-trash"></i> 
                                 </a>
                                 @include('users.delete')
                             </div>
@@ -60,6 +60,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pagination"> 
+                    {{ $user->links() }}
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

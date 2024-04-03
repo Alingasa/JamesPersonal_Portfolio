@@ -6,15 +6,18 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        @if($errors->any())
+          @include('layouts.sweetalert.error')
+        @endif
         <form action="{{route('skills.store')}}" enctype="multipart/form-data" method="POST">
           @csrf
           <div class="mb-3">
             <label for="firstName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="firstName" name="skill_name" required>
+            <input type="text" class="form-control @error('skill_name') is-invalid @enderror" id="firstName" name="skill_name">
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Percentage</label>
-            <input type="number" class="form-control" id="firstName" name="percentage" required>
+            <input type="number" class="form-control @error('percentage') is-invalid @enderror" id="firstName" name="percentage">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
