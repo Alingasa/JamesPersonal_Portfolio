@@ -5,6 +5,9 @@
                 <h6 class="mb-0"><i class="fas fa-book me-2"></i>My blogs</h6>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            @if($errors->any())
+            @include('layouts.sweetalert.error')
+            @endif
             <form id="editUserForm{{$blogs->id}}" action="{{ route('blogs.update', $blogs->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
@@ -22,10 +25,7 @@
                         <input type="file" class="form-control" id="userImage" name="blog_image" >
               
                     </div>
-                    {{-- <div class="mb-3">
-                        <label for="first_name{{$blogs->id}}" class="form-label">Category</label>
-                        <input type="text" class="form-control" id="first_name{{$blogs->id}}" name="" value="{{$blogs->experience_name}}">
-                    </div>  --}}
+                
                     <div class="form-group">
                         <strong>Categories</strong>
                         <select  class="form-control" name="category_id" id="course_id">
@@ -36,11 +36,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="firstName" class="form-label">Title</label>
-                        <input type="text" class="form-control" id="firstName" name="title" required>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="firstName" name="title" required>
                       </div>
                       <div class="mb-3">
                         <label for="firstName" class="form-label">Content</label>
-                        <input type="text" class="form-control" id="firstName" name="content" required>
+                        <input type="text" class="form-control @error('content') is-invalid @enderror" id="firstName" name="content" required>
                       </div>
                       
                 <div class="modal-footer">

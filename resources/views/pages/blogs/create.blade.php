@@ -6,6 +6,9 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
+        @if($errors->any())
+        @include('layouts.sweetalert.error')
+        @endif
         <form action="{{route('blogs.store')}}" enctype="multipart/form-data" method="POST">
           @csrf
           <div class="form-group">
@@ -22,11 +25,11 @@
         </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Title</label>
-            <input type="text" class="form-control" id="firstName" name="title" required>
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="firstName" name="title" required>
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Content</label>
-            <input class="form-control" id="description" name="content" rows="4" placeholder="Enter your description"></input>
+            <input class="form-control @error('content') is-invalid @enderror" id="description" name="content" rows="4" placeholder="Enter your description"></input>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

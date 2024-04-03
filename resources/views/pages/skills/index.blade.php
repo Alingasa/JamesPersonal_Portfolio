@@ -46,6 +46,10 @@
                     @endforeach
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pagination"> 
+                    {{ $skill->links() }}
+                </ul>
         </div>
     </div>
 </div>

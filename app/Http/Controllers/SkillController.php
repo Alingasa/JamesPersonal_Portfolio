@@ -71,7 +71,7 @@ class SkillController extends Controller
         ]);
 
         $skill->update($data);
-        return redirect()->route('skills.index');
+        return redirect()->route('skills.index')->with('success', 'updated successfully!');
     }
 
     /**

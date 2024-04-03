@@ -14,9 +14,9 @@ class ExperienceController extends Controller
     public function index()
     {
         //
-        $experience = Experience::get();
+        $experience = Experience::simplePaginate(5);
 
-        return view('pages.experiences.index', compact('experience'))->with('i');
+        return view('pages.experiences.index', compact('experience'))->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
@@ -51,7 +51,7 @@ class ExperienceController extends Controller
 
         Experience::create($data);
         
-        return redirect()->route('experiences.index');
+        return redirect()->route('experiences.index')->with('success', 'added! successfully');
     }
 
     /**
@@ -90,7 +90,7 @@ class ExperienceController extends Controller
         }
         
         $experience->update($data);
-        return redirect()->route('experiences.index');
+        return redirect()->route('experiences.index')->with('success', 'updated successfully');
     }
 
     /**
@@ -101,6 +101,6 @@ class ExperienceController extends Controller
         //
         $experience->delete();
         
-        return redirect()->route('experiences.index');
+        return redirect()->route('experiences.index')->with('delete', 'deleted successfully');
     }
 }

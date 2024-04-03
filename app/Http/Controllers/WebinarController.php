@@ -17,12 +17,12 @@ class WebinarController extends Controller
     public function index()
     {
         //
-        $webinar = webinar::get();
+        $webinar = webinar::simplePaginate(5);
         foreach ($webinar as $webinars) {
             $webinars->date = Carbon::parse($webinars->date)->isoFormat('MMMM DD, YYYY');
         }
 
-        return view('pages.webinars.index', compact('webinar'));
+        return view('pages.webinars.index', compact('webinar'))->with('i', (request()->input('page', 1) -1) * 5);
     }
 
     /**
@@ -52,7 +52,7 @@ class WebinarController extends Controller
         }
 
        webinar::create($data);
-       return redirect()->route('webinars.index');
+       return redirect()->route('webinars.index')->with('success', 'added succesfully');
     }
 
     /**
@@ -90,7 +90,7 @@ class WebinarController extends Controller
             $data['webinar_image'] = $webinar->webinar_image;
         }
          $webinar->update($data);
-         return redirect()->route('webinars.index');
+         return redirect()->route('webinars.index')->with('success', 'updated succesfully');
     
     }
 
@@ -101,6 +101,6 @@ class WebinarController extends Controller
     {
         //
         $webinar->delete();
-        return redirect()->route('webinars.index');
+        return redirect()->route('webinars.index')->with('delete', 'deleted succesfully');
     }
 }

@@ -22,7 +22,7 @@
                 <tbody>
                    @foreach ($webinar as $webinars)
                     <tr>
-                        <th scope="row">{{$webinars->id}}</th>
+                        <th scope="row">{{++$i}}</th>
                        
                         @if($webinars->webinar_image)
                         <td><img src={{ asset('storage/'. $webinars->webinar_image) }} alt="Default Profile Picture" style="width: 40px; height:40px;" class="img-profile rounded-square"></td>
@@ -53,6 +53,11 @@
                     @endforeach
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pagination"> 
+                    {{ $webinar->links() }}
+                </ul>
+            </nav>
         </div>
     </div>
 </div>

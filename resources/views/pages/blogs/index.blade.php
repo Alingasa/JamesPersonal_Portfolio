@@ -38,6 +38,11 @@
                   @endforeach
               </tbody>
           </table>
+          <nav aria-label="...">
+            <ul class="pagination"> 
+                {{ $category->links() }}
+            </ul>
+        </nav>
       </div>
   </div>
 </div>
@@ -53,7 +58,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                      
                         <th scope="col">Category</th>
                         <th scope="col">Image</th>
                         <th scope="col">Title</th>
@@ -64,7 +69,7 @@
                 <tbody>
                     @foreach ($blog as $blogs)
                     <tr>
-                        <th scope="row">{{$blogs->id}}</th>
+                      
                         <td>{{$blogs->category->name}}</td>
                             @if($blogs->blog_image)
                             <td><img src={{ asset("storage/". $blogs->blog_image) }} alt="Default Profile Picture" style="width: 50px; height:50px;" class="img-profile rounded-circle"></td>
@@ -90,11 +95,15 @@
                     @endforeach
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pagination"> 
+                    {{ $blog->links() }}
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
 
-<!-- Modal for Add User -->
-{{-- @include('pages.blogs.create') --}}
+
 @include('pages.blogs.create')
 @endsection

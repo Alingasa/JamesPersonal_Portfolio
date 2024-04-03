@@ -15,10 +15,10 @@ class BlogController extends Controller
     {
         //
 
-        $blog = Blog::with('category')->get();
-        $category = Category::get();
+        $blog = Blog::with('category')->simplePaginate(5);
+        $category = Category::simplePaginate(5);
         $cat = Category::pluck('name', 'id');
-        return view('pages.blogs.index', compact('blog', 'category', 'cat'))->with('i');
+        return view('pages.blogs.index', compact('blog', 'category', 'cat'))->with('i', (request()->input('pages', 1) - 1)* 5);
     }
 
     /**
@@ -48,7 +48,7 @@ class BlogController extends Controller
             $data['blog_image'] = $imagePath;
         }
         Blog::create($data);
-       return redirect()->route('blogs.index');
+       return redirect()->route('blogs.index')->with('success', 'added successfully');
     }
 
     /**
@@ -89,7 +89,7 @@ class BlogController extends Controller
 
         $blog->update($data);
 
-        return redirect()->route('blogs.index');
+        return redirect()->route('blogs.index')->with('success', 'updated successfully');
     }
 
     /**
@@ -99,6 +99,6 @@ class BlogController extends Controller
     {
         //
         $blog->delete();
-        return redirect()->route('blogs.index');
+        return redirect()->route('blogs.index')->with('delete', 'added successfully');
     }
 }

@@ -48,6 +48,10 @@
                     @endforeach
                 </tbody>
             </table>
+            <nav aria-label="...">
+                <ul class="pagination"> 
+                    {{ $experience->links() }}
+                </ul>
         </div>
     </div>
 </div>

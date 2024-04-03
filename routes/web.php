@@ -38,8 +38,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'dashboard'])->
 
 Route::resource('/', Front_endController::class);
 
-Route::resource('user', UserController::class);
-
 Route::resource('profile', ProfileController::class);
 
 Route::resource('interests', InterestController::class);
@@ -50,13 +48,20 @@ Route::resource('experiences', ExperienceController::class );
 
 Route::resource('webinars', WebinarController::class);
 
-Route::resource('contacts', ContactController::class);
-
-Route::resource('blogs', BlogController::class);
-
 Route::resource('category', CategoryController::class);
 
 Route::resource('messages', MessageController::class);
 
 Route::resource('education', EducationController::class);
 
+
+Route::middleware('role:admin')->group(function () {
+
+  Route::resource('user', UserController::class);
+  Route::resource('contacts', ContactController::class);
+  Route::resource('blogs', BlogController::class);
+});
+
+// Route::middleware('role:expectator')->group(function () {
+ 
+// });
