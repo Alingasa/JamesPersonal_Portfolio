@@ -24,6 +24,7 @@
             <a href="{{route('user.index')}}" class="nav-item nav-link"><i class="fa fa-users me-2"></i>Users</a>
             <a href="{{route('user.create')}}" class="nav-item nav-link"><i class="fas fa-lock me-2"></i>Password</a>
             <hr class="my-2">
+            <a href="{{ route('education.index') }}" class="nav-item nav-link"><i class="bi bi-award me-2"></i>Education</a>
             <a href="{{ route('interests.index') }}" class="nav-item nav-link"><i class="fas fa-heart me-2"></i>Interests</a>
             <a href="{{ route('skills.index') }}" class="nav-item nav-link"><i class="fas fa-cogs me-2"></i>Skills</a>
             <a href="{{ route('experiences.index')}}" class="nav-item nav-link"><i class="fas fa-briefcase me-2"></i>Experiences</a>

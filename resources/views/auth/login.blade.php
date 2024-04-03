@@ -112,7 +112,7 @@
 					</span>
 
 					<div class="wrap-input100 validate-input m-b-23" data-validate = "Username is required">
-                        @error('email')
+          @error('email')
 						<span class="invalid-input100"><strong class="text-danger">{{ $message }}</strong></span> <br>
 					@else
 						@error('password')
@@ -120,13 +120,13 @@
 						@enderror
 						@enderror
 						<span class="label-input100">Email</span>
-						<input id="email" type="email"  class="input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Type your email">
+						<input id="email" type="email"  class="input100 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" autocomplete="email" autofocus placeholder="Type your email">
 						<span class="focus-input100" data-symbol="&#xf206;"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Password is required">
 						<span class="label-input100">Password</span>
-						<input id="password" type="password" class="input100 @error('password') is-invalid @enderror"  name="password" required autocomplete="current-password" placeholder="Type your password">
+						<input id="password" type="password" class="input100 @error('password') is-invalid @enderror"  name="password" autocomplete="current-password" placeholder="Type your password">
 						<span class="focus-input100" data-symbol="&#xf190;"></span>
 					</div>
 					

@@ -82,6 +82,13 @@ class WebinarController extends Controller
             'agenda' => 'required',
         ]);
 
+        if($request->hasFile('webinar_image')){
+            $image = $request->file('webinar_image');
+            $imagePath = $image->store('img', 'public');
+            $data['webinar_image'] = $imagePath;
+        }else{
+            $data['webinar_image'] = $webinar->webinar_image;
+        }
          $webinar->update($data);
          return redirect()->route('webinars.index');
     

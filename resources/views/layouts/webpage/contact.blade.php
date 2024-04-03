@@ -45,7 +45,8 @@
       </div>
     </div>
 
-    <form action="forms/contact.php" method="post" role="form" class="php-email-form mt-4">
+    <form action="{{route('messages.store')}}" method="POST" class="php-email-form mt-4">
+      @csrf
       <div class="row">
         <div class="col-md-6 form-group">
           <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>

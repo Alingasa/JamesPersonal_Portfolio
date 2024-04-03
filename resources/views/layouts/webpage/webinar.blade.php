@@ -1,36 +1,31 @@
 <section id="webinar" class="portfolio">
-  <div class="container">
+  <div class="testimonials container">
 
     <div class="section-title">
-      <h2>Portfolio</h2>
-      <p>My Works</p>
+      <h2>Upcoming Webinars</h2>
     </div>
 
-    <div class="row">
-      <div class="col-lg-12 d-flex justify-content-center">
-        <ul id="portfolio-flters">
-          <li data-filter="*" class="filter-active">All</li>
-        </ul>
-      </div>
-    </div>
+    <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+      <div class="swiper-wrapper">
 
-    <div class="row portfolio-container">
-
-      <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-        <div class="portfolio-wrap">
-          <img src="porfolio/assets/img/portfolio/sis.png" class="img-fluid" alt="">
-          <div class="portfolio-info">
-            <h4>System</h4>
-            <p>Laravel</p>
-            <div class="portfolio-links">
-              <a href="http://studentinfo.webactivities.online/" class="bx bx-link"></a>
+        @foreach ($webinar as $webinars)
+        <div class="swiper-slide webinar-slide">
+          <div class="testimonial-item">
+            <div class="webinar-info">
+              <h3 class="webinar-title">Agenda: {{$webinars->agenda}}</h3>
+              <p class="webinar-date">Date: {{ $webinars->date}}</p>
+              <p class="webinar-host">Hosted by {{$webinars->host_name}}</p>
             </div>
-          </div>
+            @if($webinars->webinar_image)
+            <div class="webinar-image">
+              <img src="{{'storage/'. $webinars->webinar_image}}" class="testimonial-img" alt="Webinar Image" style="width: 80px; height:80px;">
+            </div>
+            @endif
+          </div><!-- End testimonial item -->
         </div>
+        @endforeach
+
       </div>
-
-      
     </div>
-
   </div>
 </section>

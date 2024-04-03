@@ -2,13 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Interest;
 use App\Models\Message;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class Front_endController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,19 +13,8 @@ class Front_endController extends Controller
     public function index()
     {
         //
-        $users = DB::table('users')->where('role', 'admin')->get();
+        
 
-        foreach ($users as $user) {
-            $user->birth_date = Carbon::parse($user->birth_date)->isoFormat('MMMM DD, YYYY');
-        }
-
-        $interest = DB::table('interests')->get();
-        $skill = DB::table('skills')->get();
-        $experience = DB::table('experiences')->get();
-        $education = DB::table('education')->get();
-        $webinar = DB::table('webinars')->get();
-
-        return view('welcome',compact('users', 'interest', 'skill', 'experience', 'education', 'webinar'));
     }
 
     /**
@@ -37,7 +23,6 @@ class Front_endController extends Controller
     public function create()
     {
         //
-       
     }
 
     /**
@@ -46,7 +31,15 @@ class Front_endController extends Controller
     public function store(Request $request)
     {
         //
-        
+        $data = $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
+
+       Message::create($data);
+       return redirect()->to('http://localhost:8000')->with('success', 'message sent successfully');
     }
 
     /**

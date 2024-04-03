@@ -72,7 +72,24 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+
+        $data = $request->validate([
+            'category_id' => 'required',
+            'title' => 'required',
+            'content' => 'required', 
+        ]);
+
+        if($request->hasFile('blog_image')){
+            $image = $request->file('blog_image');
+            $imagePath = $image->store('img', 'public');
+            $data['blog_image'] = $imagePath;
+        }else{
+            $data['blog_image'] = $blog->blog_image;
+        }
+
+        $blog->update($data);
+
+        return redirect()->route('blogs.index');
     }
 
     /**
@@ -81,5 +98,7 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
+        $blog->delete();
+        return redirect()->route('blogs.index');
     }
 }

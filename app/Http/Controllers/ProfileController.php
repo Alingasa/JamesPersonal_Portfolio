@@ -83,7 +83,6 @@ class ProfileController extends Controller
   
         // Find the user by ID
         if ($request->hasFile('avatar')) {
-        
             $avatar = $request->file('avatar');
             $avatarPath = $avatar->store('avatars', 'public'); // Store the file in the 'avatars' directory within the 'public' disk
             $data['avatar'] = $avatarPath;

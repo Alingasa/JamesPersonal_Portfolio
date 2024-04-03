@@ -3,9 +3,11 @@
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\Front_endController;
 use App\Http\Controllers\InterestController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SkillController;
 use App\Http\Controllers\UserController;
@@ -53,4 +55,8 @@ Route::resource('contacts', ContactController::class);
 Route::resource('blogs', BlogController::class);
 
 Route::resource('category', CategoryController::class);
+
+Route::resource('messages', MessageController::class);
+
+Route::resource('education', EducationController::class);
 

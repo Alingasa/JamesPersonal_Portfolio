@@ -19,4 +19,11 @@ class Blog extends Model
     public function category(){
         return $this->belongsTo(Category::class);
     }
+
+    public function setTitleAttribute($value){
+        $this->attributes['title'] = ucwords($value);
+    }
+    public function setContentAttribute($value){
+        $this->attributes['content'] = ucwords($value);
+    }
 }

@@ -10,17 +10,15 @@
         </div>
         <!-- Spinner End -->
 
-
         <!-- Sidebar Start -->
        @include('layouts.home._sidebar')
         <!-- Sidebar End -->
-
 
         <!-- Content Start -->
         <div class="content">
             <!-- Navbar Start -->
          
-           @include('layouts.home._topbar')
+           @include('layouts.home.topbar')
        
             <!-- Navbar End -->
             <div class="container-fluid pt-4 px-4">

@@ -25,7 +25,7 @@
                         <th scope="row">{{$skills->id}}</th>
                  
                         <td>{{$skills->skill_name}}</td>
-                        <td>{{$skills->percentage}}</td>
+                        <td>{{$skills->percentage}}%</td>
                          <td>
                             <!-- Edit button with icon -->
                             <div class="d-flex">

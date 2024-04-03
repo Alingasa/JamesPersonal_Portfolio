@@ -39,6 +39,8 @@
     </div>
     <!-- End Interests -->
 
+ 
+
 
   </section><!-- End About Section -->
 
@@ -131,7 +133,7 @@
   <!-- ======= Contact Section ======= -->
    @include('layouts.webpage.contact')
   <!-- End Contact Section -->
-
+  @include('layouts.webpage.education')
 
   <div class="credits">
     <!-- All the links in the footer should remain intact. -->
