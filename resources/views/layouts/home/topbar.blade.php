@@ -16,27 +16,16 @@
         <!-- Notification Dropdown Menu -->
         <!-- Notification Dropdown Menu Ends -->
       </div>
-      <div class="navbar-nav align-items-center ms-auto">
-        <div class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+
+        <div >
+          @if(auth()->user()->role == 'admin')
+            <a href="{{route('messages.index')}}" class="nav-link" >
                 <i class="fa fa-envelope me-lg-2"></i>
                 <span class="d-none d-lg-inline-flex">Messages</span>
             </a>
-            <div class="dropdown-menu dropdown-menu-end bg-light border-0 rounded-0 rounded-bottom m-0">
-                <a href="#" class="dropdown-item">
-                  {{-- @foreach($messenger as $messages) --}}
-                    <div class="d-flex align-items-center">
-                        <img class="rounded-circle" src="my_dashboard/img/user.jpg" alt="" style="width: 40px; height: 40px;">
-                        <div class="ms-2">
-                            <h6 class="fw-normal mb-0">send you a message</h6>
-                            <small>15 minutes ago</small>
-                        </div>
-                    </div>
-                    {{-- @endforeach --}}
-                </a>
-                <hr class="dropdown-divider">
-                <a href="#" class="dropdown-item text-center">See all message</a>
-            </div>
+            @endif
+          
+  
         </div>
       
       <div class="nav-item dropdown">

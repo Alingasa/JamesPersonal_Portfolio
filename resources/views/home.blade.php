@@ -9,7 +9,9 @@
             </div>
         </div>
         <!-- Spinner End -->
-
+{{-- @foreach ($message as $item)
+    
+@endforeach --}}
         <!-- Sidebar Start -->
        @include('layouts.home._sidebar')
         <!-- Sidebar End -->
@@ -18,7 +20,8 @@
         <div class="content">
             <!-- Navbar Start -->
          
-           @include('layouts.home.topbar')
+         @include('layouts.home.topbar')
+       
        
             <!-- Navbar End -->
             <div class="container-fluid pt-4 px-4">

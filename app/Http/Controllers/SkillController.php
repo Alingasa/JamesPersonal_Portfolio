@@ -26,6 +26,7 @@ class SkillController extends Controller
     public function create()
     {
         //
+        return redirect()->route('skills.index')->with('unauthorized', 'Unauthorized Access');
     }
 
     /**

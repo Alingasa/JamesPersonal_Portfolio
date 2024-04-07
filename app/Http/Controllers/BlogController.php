@@ -27,6 +27,7 @@ class BlogController extends Controller
     public function create()
     {
         //
+        return redirect()->route('blogs.index')->with('unauthorized', 'Unauthorized Access');
     }
 
     /**

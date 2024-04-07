@@ -25,6 +25,7 @@ class ExperienceController extends Controller
     public function create()
     {
         //
+        return redirect()->route('experiences.index')->with('unauthorized', 'Unauthorized Access');
     }
 
     /**

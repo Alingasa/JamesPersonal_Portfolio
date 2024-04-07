@@ -27,7 +27,7 @@ class InterestController extends Controller
     public function create()
     {
         //
-        return redirect()->back()->with('unauthorized', 'Unauthorized Acess');
+        return redirect()->route('interests.index')->with('unauthorized', 'Unauthorized Access');
         
     }
 
@@ -60,6 +60,7 @@ class InterestController extends Controller
      */
     public function show(string $id)
     {
+        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
     }
 
     /**
@@ -68,6 +69,7 @@ class InterestController extends Controller
     public function edit(string $id)
     {
         //
+        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
     }
 
     /**

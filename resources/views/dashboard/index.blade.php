@@ -1,5 +1,6 @@
 @extends('home')
 @section('table')
+@if(auth()->user()->role == 'admin')
 <div class="col-sm-6 col-xl-3">
   <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
       <i class="fa fa-user fa-3x text-primary"></i>
@@ -18,6 +19,7 @@
       </div>
   </div>
 </div>
+@endif
 <div class="col-sm-6 col-xl-3">
   <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
       <i class="fa fa-award fa-3x text-primary"></i>
@@ -63,6 +65,7 @@
       </div>
   </div>
 </div>
+@if(auth()->user()->role == 'admin')
 <div class="col-sm-6 col-xl-3">
   <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
       <i class="fa fa-calendar fa-3x text-primary"></i>
@@ -72,7 +75,7 @@
       </div>
   </div>
 </div>
-
+@endif
 
 </div>
 </div>

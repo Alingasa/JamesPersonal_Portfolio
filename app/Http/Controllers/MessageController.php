@@ -13,7 +13,8 @@ class MessageController extends Controller
     public function index()
     {
         //
-        
+        $message = Message::get();
+        return view('pages.messages.index', compact('message'))->with('i');
 
     }
 
@@ -39,7 +40,7 @@ class MessageController extends Controller
         ]);
 
        Message::create($data);
-       return redirect()->to('http://localhost:8000')->with('success', 'message sent successfully');
+       return redirect()->to('http://localhost:8000')->with('sent_success', 'message sent successfully');
     }
 
     /**
@@ -69,8 +70,10 @@ class MessageController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Message $message)
     {
         //
+        $message->delete();
+        return redirect()->route('messages.index')->with('delete', 'deleted successfully');
     }
 }

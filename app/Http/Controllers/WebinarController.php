@@ -31,6 +31,7 @@ class WebinarController extends Controller
     public function create()
     {
         //
+        return redirect()->route('webinars.index')->with('unauthorized', 'Unauthorized Access');
     }
 
     /**

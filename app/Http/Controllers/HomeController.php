@@ -25,8 +25,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $m = Message::get();
-        return view('home', compact('m'));
+        
+        return view('home');
     }
     public function dashboard(){
 

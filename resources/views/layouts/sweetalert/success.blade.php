@@ -1,10 +1,10 @@
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-   @if(session('success'))
+   @if(session('sent_success'))
        Swal.fire({
            icon: 'success',
-           title: 'Success!',
+           title: 'Sent',
            showConfirmButton: false,
            timer: 2500
        });
@@ -36,14 +36,10 @@
            showConfirmButton: false,
            timer: 2500
        });
-   @endif
-</script>
-
-<script>
-   @if(session('delete'))
+       @elseif(session('delete'))
        Swal.fire({
            icon: 'success',
-           title: 'deleted Successfully!',
+           title: 'Deleted Successfully!',
            showConfirmButton: false,
            timer: 2500
        });

@@ -23,6 +23,7 @@ class EducationController extends Controller
     public function create()
     {
         //
+        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
     }
 
     /**
@@ -48,6 +49,7 @@ class EducationController extends Controller
     public function show(Education $education)
     {
         //
+        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
     }
 
     /**
@@ -56,6 +58,7 @@ class EducationController extends Controller
     public function edit(Education $education)
     {
         //
+        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
     }
 
     /**

@@ -11,7 +11,7 @@ class CheckRole
     public function handle(Request $request, Closure $next, $role)
     {
         if (!$request->user()) {
-            return redirect('/login')->with('login_first', 'Please login First');
+            return redirect('/login');
         }
 
        

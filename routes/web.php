@@ -6,6 +6,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\EducationController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\Front_endController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\InterestController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
@@ -32,8 +33,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('home', HomeController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'dashboard'])->name('dashboard');
 
 Route::resource('/', Front_endController::class);
@@ -44,7 +45,6 @@ Route::resource('skills', SkillController::class);
 Route::resource('experiences', ExperienceController::class);
 Route::resource('webinars', WebinarController::class);
 Route::resource('category', CategoryController::class);
-Route::resource('messages', MessageController::class);
 Route::resource('education', EducationController::class);
 
 
@@ -52,6 +52,7 @@ Route::middleware('role:admin')->group(function () {
   Route::resource('user', UserController::class);
   Route::resource('blogs', BlogController::class);
   Route::resource('contacts', ContactController::class);
+  Route::resource('messages', MessageController::class);
  
 });
 

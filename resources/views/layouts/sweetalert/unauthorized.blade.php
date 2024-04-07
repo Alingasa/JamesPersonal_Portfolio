@@ -7,6 +7,8 @@
   icon: 'error',                 
   showConfirmButton: false,
   timer: 3500
-  @endif
+
 });
+@endif
+
 </script>
