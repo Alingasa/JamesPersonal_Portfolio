@@ -12,7 +12,7 @@ class Experience extends Model
     protected $fillable = [
         'experience_image',
         'experience_name',
-        'description',
+        'experience_link',
     ];
 
     public function setExperienceNameAttribute($value)

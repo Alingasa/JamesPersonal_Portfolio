@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('experience_image')->nullable();
             $table->string('experience_name')->unique();
-            $table->text('description');
+            $table->string('experience_link');
             $table->timestamps();
         });
     }

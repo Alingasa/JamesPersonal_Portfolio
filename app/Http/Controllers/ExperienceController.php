@@ -37,7 +37,7 @@ class ExperienceController extends Controller
         $data = $request->validate([
             'experience_image' => 'required',
             'experience_name' => 'required',
-            'description' => 'required',
+            'experience_link' => 'required',
         ]);
 
        if($request->hasFile('experience_image')){
@@ -79,7 +79,7 @@ class ExperienceController extends Controller
         //
         $data = $request->validate([
             'experience_name' => 'required',
-            'description' => 'required',
+            'experience_link' => 'required',
         ]);
          
         if($request->hasFile('experience_image')){

@@ -26,9 +26,9 @@
                       <label for="first_name{{$experiences->id}}" class="form-label">Name</label>
                       <input type="text" class="form-control" id="first_name{{$experiences->id}}" name="experience_name" value="{{$experiences->experience_name}}">
                   </div> 
-                  <div class="text-center mb-3">
-                    <label for="description" class="form-label"><strong>Description</strong></label>
-                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter your description">{{ $experiences->description }}</textarea>
+                  <div class="mb-3">
+                    <label for="first_name{{$experiences->id}}" class="form-label">Link</label>
+                    <input type="text" class="form-control" id="first_name{{$experiences->id}}" name="experience_link" value="{{$experiences->experience_link}}">
             </div>
               <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
