@@ -39,7 +39,7 @@ class EducationController extends Controller
         ]);
 
         Education::create($data);
-        return redirect()->route('education.index')->with('success', 'added successfully!');
+        return redirect()->route('education.index')->with('add_success', 'added successfully!');
     }
 
     /**
@@ -72,7 +72,7 @@ class EducationController extends Controller
         ]);
        
         $education->update($data);
-        return redirect()->route('education.index')->with('success', 'updated successfully!');
+        return redirect()->route('education.index')->with('update_success', 'updated successfully!');
     }
 
     /**

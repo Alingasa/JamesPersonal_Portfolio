@@ -56,32 +56,42 @@ class ProfileController extends Controller
     public function update(Request $request, User $profile): RedirectResponse
     {
         // Validate the request data
+        if(auth()->user()->role == 'spectator'){
+            $data = $request->validate([
+                'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'role' => 'required',
+                'first_name' => 'required',
+                'middle_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|email',
+            ]);
+        } else {
         $data = $request->validate([
-            'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'role' => 'required',
-            'first_name' => 'required',
-            'middle_name' => 'required',
-            'last_name' => 'required',
-            'email' => 'required|email',
-            'birth_date' => 'required',
-            'passion' => 'required',
-            'phone_number' => 'required',
-            'address' => 'required',
-            'gender' => 'required',
-            'age' => 'required',
-            'municipality' => 'required',
-            'province' => 'required',
-            'zip_code' => 'required',
-            'status' => 'required',
-            'religion' => 'required',
-            'description' => 'required',
-            'fb_url' => 'required',
-            'instagram_url' => 'required',
-            'linkedin_url' => 'required',
-            'youtube_url' => 'required',
-        ]);
-  
-      
+                'avatar' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+                'role' => 'required',
+                'first_name' => 'required',
+                'middle_name' => 'required',
+                'last_name' => 'required',
+                'email' => 'required|email',
+                'birth_date' => 'required',
+                'passion' => 'required',
+                'phone_number' => 'required',
+                'address' => 'required',
+                'gender' => 'required',
+                'age' => 'required',
+                'municipality' => 'required',
+                'province' => 'required',
+                'zip_code' => 'required',
+                'status' => 'required',
+                'religion' => 'required',
+                'description' => 'required',
+                'fb_url' => 'required',
+                'instagram_url' => 'required',
+                'linkedin_url' => 'required',
+                'youtube_url' => 'required',
+            ]);
+        }
+       
         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
             $avatarPath = $avatar->store('avatars', 'public'); 

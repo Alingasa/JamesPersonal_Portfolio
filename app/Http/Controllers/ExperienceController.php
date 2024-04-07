@@ -51,7 +51,7 @@ class ExperienceController extends Controller
 
         Experience::create($data);
         
-        return redirect()->route('experiences.index')->with('success', 'added! successfully');
+        return redirect()->route('experiences.index')->with('add_success', 'added! successfully');
     }
 
     /**
@@ -90,7 +90,7 @@ class ExperienceController extends Controller
         }
         
         $experience->update($data);
-        return redirect()->route('experiences.index')->with('success', 'updated successfully');
+        return redirect()->route('experiences.index')->with('update_success', 'updated successfully');
     }
 
     /**

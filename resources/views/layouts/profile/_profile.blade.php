@@ -30,6 +30,7 @@
                 </label>
             </div>
                   <div class="row">
+                    @if(auth()->user()->role == 'spectator' || auth()->user()->role == 'admin')
                         <input type="hidden" class="form-control" id="description" name="role" value="{{Auth::user()->role}}" required>
                         <input type="hidden" class="form-control" id="description" name="description" value="{{Auth::user()->description}}"  required>
                       <div class="col-md-3 mb-3">
@@ -48,6 +49,8 @@
                           <label for="email" class="form-label"><strong>Email</strong></label>
                           <input type="email" class="form-control  @error('email') is-invalid @enderror" id="email" name="email" value="{{Auth::user()->email}}" placeholder="Enter your email">
                       </div>
+                      @endif
+                      @if(auth()->user()->role == 'admin')
                       <div class="col-md-3 mb-3">
                         <label for="firstName" class="form-label"><strong>Birthday</strong></label>
                         <input type="date" class="form-control  @error('birth_date') is-invalid @enderror" id="birth_date" name="birth_date" value="{{Auth::user()->birth_date}}" placeholder="Enter your first name">
@@ -115,6 +118,7 @@
                   </div>
               
           </div>
+          @endif
           <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
               <button type="submit" id="updateProfileBtn" class="btn btn-primary">Update</button>

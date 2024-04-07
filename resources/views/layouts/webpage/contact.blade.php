@@ -11,9 +11,12 @@
       <div class="col-md-6 d-flex align-items-stretch">
         <div class="info-box">
           <i class="bx bx-map"></i>
+         
           <h3>My Address</h3>
-          <p>Brgy. Atabay Hilongos, Leyte</p>
+          @foreach($users as $userContact)
+          <p>{{$userContact->address. " ". $userContact->municipality . ",". $userContact->province }}</p>
         </div>
+        @endforeach
       </div>
 
       <div class="col-md-6 mt-4 mt-md-0 d-flex align-items-stretch">
@@ -21,10 +24,12 @@
           <i class="bx bx-share-alt"></i>
           <h3>Social Profiles</h3>
           <div class="social-links">
-            <a href="https://www.facebook.com/james.alingasa.13" class="facebook"><i class="bi bi-facebook"></i></a>
-            <a href="https://www.instagram.com/jymes__/?hl=en" class="instagram"><i class="bi bi-instagram"></i></a>
-            <a href="https://ph.linkedin.com/in/james-alingasa-054a03259" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            <a href="https://www.youtube.com/@jamesalingasa" class="twitter"><i class="bi bi-youtube"></i></a>
+            @foreach($users as $links)
+            <a href="{{$links->fb_url}}" class="facebook"><i class="bi bi-facebook"></i></a>
+            <a href="{{$links->instagram_url}}" class="instagram"><i class="bi bi-instagram"></i></a>
+            <a href="{{$links->linkedin_url}}" class="linkedin"><i class="bi bi-linkedin"></i></a>
+            <a href="{{$links->youtube_url}}" class="twitter"><i class="bi bi-youtube"></i></a>
+            @endforeach
           </div>
         </div>
       </div>
@@ -32,15 +37,19 @@
       <div class="col-md-6 mt-4 d-flex align-items-stretch">
         <div class="info-box">
           <i class="bx bx-envelope"></i>
+          @foreach($users as $email)
           <h3>Email Me</h3>
-          <p>j.alingasa@mlgcl.edu.ph</p>
+          <p>{{$email->email}}</p>
         </div>
+        @endforeach
       </div>
       <div class="col-md-6 mt-4 d-flex align-items-stretch">
         <div class="info-box">
           <i class="bx bx-phone-call"></i>
           <h3>Call Me</h3>
-          <p>+63 997 366 8501</p>
+          @foreach($users as $callme)
+          <p>{{$callme->phone_number}}</p>
+          @endforeach
         </div>
       </div>
     </div>

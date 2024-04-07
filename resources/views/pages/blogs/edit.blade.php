@@ -36,13 +36,16 @@
                     </div>
                     <div class="mb-3">
                         <label for="firstName" class="form-label">Title</label>
-                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="firstName" name="title" required>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror" id="firstName" value="{{$blogs->title}}" name="title" required>
                       </div>
                       <div class="mb-3">
                         <label for="firstName" class="form-label">Content</label>
-                        <input type="text" class="form-control @error('content') is-invalid @enderror" id="firstName" name="content" required>
+                        <input type="text" class="form-control @error('content') is-invalid @enderror" id="firstName" value="{{$blogs->content}}" name="content" required>
                       </div>
-                      
+                      <div class="mb-3">
+                        <label for="firstName" class="form-label">Description</label>
+                        <input type="text" class="form-control @error('description') is-invalid @enderror" id="firstName" value="{{$blogs->description}}" name="description" required>
+                      </div>      
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save</button>

@@ -12,7 +12,7 @@
         <div class="swiper-slide webinar-slide">
           <div class="testimonial-item">
             <div class="webinar-info">
-              <h3 class="webinar-title">Agenda: {{$webinars->agenda}}</h3>
+              <h3 class="webinar-title text-danger">Agenda: {{$webinars->agenda}}</h3>
               <p class="webinar-date">Date: {{ $webinars->date}}</p>
               <p class="webinar-host">Hosted by {{$webinars->host_name}}</p>
             </div>

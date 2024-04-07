@@ -84,14 +84,15 @@
                                 <a href="#" class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editblogModal{{$blogs->id}}">
                                     <i class="fas fa-edit"></i> <!-- Font Awesome edit icon -->
                                 </a>    
-                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteModal{{$blogs->id}}">
+                                <a href="#" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#deleteBlogsModal{{$blogs->id}}">
                                     <i class="fas fa-trash"></i> <!-- Font Awesome edit icon -->
                                 </a>
                             </div>
                         </td>
                     </tr>
-                    @include('pages.blogs.edit')
                     @include('pages.blogs.delete')
+                    @include('pages.blogs.edit')
+                    
                     @endforeach
                 </tbody>
             </table>

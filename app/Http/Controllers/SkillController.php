@@ -40,7 +40,7 @@ class SkillController extends Controller
         ]);
      
         Skill::create($data);
-        return redirect()->route('skills.index')->with('success', 'added successfully');
+        return redirect()->route('skills.index')->with('add_success', 'added successfully');
     }
 
     /**
@@ -71,7 +71,7 @@ class SkillController extends Controller
         ]);
 
         $skill->update($data);
-        return redirect()->route('skills.index')->with('success', 'updated successfully!');
+        return redirect()->route('skills.index')->with('update_success', 'updated successfully!');
     }
 
     /**

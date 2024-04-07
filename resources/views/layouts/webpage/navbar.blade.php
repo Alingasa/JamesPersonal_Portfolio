@@ -14,6 +14,7 @@
     <li><a class="nav-link" href="#blog">Blog</a></li>
     <li><a class="nav-link" href="#contact">Contact</a></li>
     <li><a href="{{ route('login') }}" class="nav-link text-danger">Log In</a></li>
+    <li><a href="{{ route('register') }}" class="nav-link text-primary">Sign Up</a></li>
     
   </ul>
   <i class="bi bi-list mobile-nav-toggle"></i>

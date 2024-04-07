@@ -40,6 +40,7 @@ class BlogController extends Controller
             'blog_image' => 'required',
             'title' => 'required',
             'content' => 'required',
+            'description' => 'required',
         ]);
         
         if($request->hasFile('blog_image')){
@@ -48,7 +49,7 @@ class BlogController extends Controller
             $data['blog_image'] = $imagePath;
         }
         Blog::create($data);
-       return redirect()->route('blogs.index')->with('success', 'added successfully');
+       return redirect()->route('blogs.index')->with('add_success', 'added successfully');
     }
 
     /**
@@ -76,7 +77,8 @@ class BlogController extends Controller
         $data = $request->validate([
             'category_id' => 'required',
             'title' => 'required',
-            'content' => 'required', 
+            'content' => 'required',
+            'description' => 'required', 
         ]);
 
         if($request->hasFile('blog_image')){
@@ -89,7 +91,7 @@ class BlogController extends Controller
 
         $blog->update($data);
 
-        return redirect()->route('blogs.index')->with('success', 'updated successfully');
+        return redirect()->route('blogs.index')->with('update_success', 'updated successfully');
     }
 
     /**

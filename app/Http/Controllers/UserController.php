@@ -57,7 +57,7 @@ class UserController extends Controller
       
         User::create($data);
         
-        return redirect()->route('user.index')->with('success', 'User created successfully.');
+        return redirect()->route('user.index')->with('add_success', 'User created successfully.');
         
         
     }
@@ -82,7 +82,7 @@ class UserController extends Controller
 
         $user->update($data);
 
-        return redirect()->route('user.create')->with('success', 'User created successfully.');
+        return redirect()->route('user.create')->with('update_success', 'User created successfully.');
     }
 
     /**
@@ -110,7 +110,7 @@ class UserController extends Controller
             $data['avatar'] = $user->avatar;
         }
         $user->update($data);
-        return redirect()->route('user.index')->with('success', 'User created successfully.');
+        return redirect()->route('user.index')->with('update_success', 'User created successfully.');
         
     }
 

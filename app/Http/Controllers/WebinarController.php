@@ -52,7 +52,7 @@ class WebinarController extends Controller
         }
 
        webinar::create($data);
-       return redirect()->route('webinars.index')->with('success', 'added succesfully');
+       return redirect()->route('webinars.index')->with('add_success', 'added succesfully');
     }
 
     /**
@@ -90,7 +90,7 @@ class WebinarController extends Controller
             $data['webinar_image'] = $webinar->webinar_image;
         }
          $webinar->update($data);
-         return redirect()->route('webinars.index')->with('success', 'updated succesfully');
+         return redirect()->route('webinars.index')->with('update_success', 'updated succesfully');
     
     }
 

@@ -40,7 +40,7 @@
                         <label for="first_name{{$users->id}}" class="form-label">Email</label>
                         <input type="text" class="form-control" id="middle_name{{$users->id}}" name="email" value="{{$users->email}}">
                     </div>
-                        {{-- <input type="hidden" class="form-control" id="middle_name{{$users->id}}" name="password" value="{{$users->password}}">  --}}
+                    
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

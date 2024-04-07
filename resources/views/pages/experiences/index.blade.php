@@ -5,7 +5,9 @@
     <div class="bg-light rounded h-100 p-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h6 class="mb-0"><i class="fas fa-briefcase me-2"></i>Experiences</h6>
+            @if(auth()->user()->role == 'admin')
             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addInterestModal">Add Experience</button>
+            @endif
         </div>
         <div class="table-responsive">
             <table class="table">
@@ -14,7 +16,9 @@
                         <th scope="col">#</th>
                         <th scope="col">Image</th>
                         <th scope="col">Name</th>
+                        @if(auth()->user()->role == 'admin')
                         <th scope="col">Actions</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -30,6 +34,7 @@
                         <td>{{$experiences->experience_name}}</td>
                          <td>
                             <!-- Edit button with icon -->
+                            @if(auth()->user()->role == 'admin')
                             <div class="d-flex">
                                 <a href="#" class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editExperienceModal{{$experiences->id}}">
                                     <i class="fas fa-edit"></i> <!-- Font Awesome edit icon -->
@@ -40,6 +45,7 @@
                                 </a>
                                
                             </div>
+                            @endif
                         </td>
                     </tr>
                     @include('pages.experiences.delete')   

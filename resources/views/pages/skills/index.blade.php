@@ -5,7 +5,9 @@
     <div class="bg-light rounded h-100 p-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h6 class="mb-0"><i class="fas fa-cogs me-2"></i>Skills</h6>
+            @if(auth()->user()->role == 'admin')
             <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#addSkillModal">Add Skills</button>
+            @endif
         </div>
         <div class="table-responsive">
             <table class="table">
@@ -14,7 +16,9 @@
                         <th scope="col">#</th>
                         <th scope="col">Name</th>
                         <th scope="col">Percentage</th>
+                        @if(auth()->user()->role == 'admin')
                         <th scope="col">Actions</th>
+                        @endif
                     </tr>
                 </thead>
                 <tbody>
@@ -28,6 +32,7 @@
                         <td>{{$skills->percentage}}%</td>
                          <td>
                             <!-- Edit button with icon -->
+                            @if(auth()->user()->role == 'admin')
                             <div class="d-flex">
                                 <a href="#" class="btn btn-warning btn-sm me-1" data-bs-toggle="modal" data-bs-target="#editSkillModal{{$skills->id}}">
                                     <i class="fas fa-edit"></i> <!-- Font Awesome edit icon -->
@@ -38,6 +43,7 @@
                                 </a>
                                
                             </div>
+                            @endif
                         </td>
                     </tr>
                     @include('pages.skills.delete')   

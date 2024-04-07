@@ -1,5 +1,5 @@
 <!-- Delete Modal -->
-<div class="modal fade" id="deleteModal{{$blogs->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{$blogs->id}}" aria-hidden="true">
+<div class="modal fade" id="deleteBlogsModal{{$blogs->id}}" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel{{$blogs->id}}" aria-hidden="true">
   <div class="modal-dialog" role="document">
       <div class="modal-content">
           <div class="modal-header">

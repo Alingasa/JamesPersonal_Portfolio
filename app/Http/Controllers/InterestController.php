@@ -27,6 +27,8 @@ class InterestController extends Controller
     public function create()
     {
         //
+        return redirect()->back()->with('unauthorized', 'Unauthorized Acess');
+        
     }
 
     /**
@@ -50,7 +52,7 @@ class InterestController extends Controller
         }
         
         Interest::create($data);
-        return redirect()->route('interests.index')->with('success', 'User created successfully.');
+        return redirect()->route('interests.index')->with('add_success', 'User created successfully.');
     }
 
     /**
@@ -58,7 +60,6 @@ class InterestController extends Controller
      */
     public function show(string $id)
     {
-        //
     }
 
     /**
@@ -82,19 +83,21 @@ class InterestController extends Controller
          
         if ($request->hasFile('image_logo')) {
            
-            if ($interest->image_logog) {
+            if ($interest->image_logo) {
                 Storage::disk('public')->delete($interest->image_logo);
             }
         
             $avatar = $request->file('image_logo');
             $avatarPath = $avatar->store('avatars', 'public'); 
             $data['image_logo'] = $avatarPath;
-        } else {
+        } 
+        
+        // else {
            
-            $data['image_logo'] = $interest->image_logo;
-        }
+        //     $data['image_logo'] = $interest->image_logo;
+        // }
         $interest->update($data);
-        return redirect()->route('interests.index')->with('success', 'User created successfully.');
+        return redirect()->route('interests.index')->with('update_success', 'User created successfully.');
     }
 
     /**

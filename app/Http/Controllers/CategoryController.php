@@ -34,7 +34,7 @@ class CategoryController extends Controller
         ]);
 
         Category::create($data);
-        return redirect()->route('blogs.index')->with('success', 'added successfully');
+        return redirect()->route('blogs.index')->with('add_success', 'added successfully');
     }
 
     /**
@@ -64,7 +64,7 @@ class CategoryController extends Controller
         ]);
 
         $category->update($data);
-        return redirect()->route('blogs.index')->with('success', 'added successfully');
+        return redirect()->route('blogs.index')->with('update_success', 'added successfully');
     }
 
     /**

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Interest;
 use App\Models\Message;
 use Carbon\Carbon;
@@ -27,8 +28,17 @@ class Front_endController extends Controller
         $experience = DB::table('experiences')->get();
         $education = DB::table('education')->get();
         $webinar = DB::table('webinars')->get();
+        $blog = Blog::with('category')->get();
 
-        return view('welcome',compact('users', 'interest', 'skill', 'experience', 'education', 'webinar'));
+        return view('welcome',compact(
+            'users', 
+            'interest', 
+            'skill', 
+            'experience', 
+            'education', 
+            'webinar', 
+            'blog'
+        ));
     }
 
     /**
