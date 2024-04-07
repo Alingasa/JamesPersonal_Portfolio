@@ -19,7 +19,6 @@
                     <input type="file" class="form-control" id="userImage" name="webinar_image" >
           
                 </div>
-                 
                   <div class="mb-3">
                       <label for="first_name{{$webinars->id}}" class="form-label">Host Name</label>
                       <input type="text" class="form-control @error('host_name') is-invalid @enderror" id="first_name{{$webinars->id}}" name="host_name" value="{{$webinars->host_name}}">
