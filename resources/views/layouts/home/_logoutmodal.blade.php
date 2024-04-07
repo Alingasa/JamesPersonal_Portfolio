@@ -11,7 +11,7 @@ function logoutWithSweetAlert() {
         showCancelButton: true,
         confirmButtonColor: '#d33',
         cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Yes, log me out!',
+        confirmButtonText: 'log me out!',
         cancelButtonText: 'Cancel'
     }).then((result) => {
         if (result.isConfirmed) {

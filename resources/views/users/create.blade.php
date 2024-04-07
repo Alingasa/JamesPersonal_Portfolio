@@ -13,7 +13,7 @@
           @csrf
           <div class="mb-3">
             <label for="userImage" class="form-label">Choose Image</label>
-            <input type="file" class="form-control" id="userImage" name="avatar">
+            <input type="file" class="form-control @error('first_name') is-invalid @enderror" id="userImage" name="avatar">
           </div>
           <div class="mb-3">
             <input type="hidden" class="form-control" name="role" value="spectator" required>

@@ -100,13 +100,12 @@ class UserController extends Controller
             'email' => 'required|email',
         ]);
          
-        if ($request->hasFile('avatar')) {
-        
+         if ($request->hasFile('avatar')) {
             $avatar = $request->file('avatar');
-            $avatarPath = $avatar->store('avatars', 'public');  
+            $avatarPath = $avatar->store('avatars', 'public'); 
             $data['avatar'] = $avatarPath;
         } else {
-           
+    
             $data['avatar'] = $user->avatar;
         }
         $user->update($data);
