@@ -9,9 +9,7 @@
             </div>
         </div>
         <!-- Spinner End -->
-{{-- @foreach ($message as $item)
-    
-@endforeach --}}
+
         <!-- Sidebar Start -->
        @include('layouts.home._sidebar')
         <!-- Sidebar End -->

@@ -14,6 +14,7 @@ class MessageController extends Controller
     {
         //
         $message = Message::get();
+       
         return view('pages.messages.index', compact('message'))->with('i');
 
     }
