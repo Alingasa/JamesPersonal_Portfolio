@@ -59,7 +59,7 @@ class ContactController extends Controller
         
         if($data){
             $contact->update($data);
-            return redirect()->route('contacts.index');
+            return redirect()->route('contacts.index')->with('update_success', 'updated successfully!');
         }
       
     }
