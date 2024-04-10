@@ -10,7 +10,6 @@
     <li><a class="nav-link" href="#education">Education</a></li>
     <li><a class="nav-link" href="#skills">Skills</a></li>
     <li><a class="nav-link" href="#experience">Experience</a></li>
-    <li><a class="nav-link" href="#webinar">Webinar</a></li>
     <li><a class="nav-link" href="#blog">Blog</a></li>
     <li><a class="nav-link" href="#contact">Contact</a></li>
     <li><a href="{{ route('login') }}" class="nav-link text-danger">Log In</a></li>

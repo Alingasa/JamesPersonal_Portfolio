@@ -73,6 +73,9 @@
                         </div>
                         <div class="form-floating mb-3">
                             <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" id="floatingInput" name="email" >
+                            @error('email')
+                            <p class="text-danger">{{$message}}</p> 
+                             @enderror
                             <label for="floatingInput">Email</label>
                         </div>
                          <div class="form-floating mb-4">

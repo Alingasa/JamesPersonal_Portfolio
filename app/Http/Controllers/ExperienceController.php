@@ -40,7 +40,7 @@ class ExperienceController extends Controller
         //
         $data = $request->validate([
             'experience_image' => 'required',
-            'experience_name' => 'required',
+            'experience_name' => 'required|unique:experiences',
             'experience_link' => 'required',
         ]);
 

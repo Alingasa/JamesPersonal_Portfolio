@@ -49,7 +49,7 @@ class InterestController extends Controller
         //
         $data = $request->validate([
             'image_logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-            'name' => 'required',
+            'name' => 'required|unique:interests',
         ]);
 
         if ($request->hasFile('image_logo')) {

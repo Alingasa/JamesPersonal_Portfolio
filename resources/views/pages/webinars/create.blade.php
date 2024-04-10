@@ -22,6 +22,9 @@
           <div class="mb-3">
             <label for="firstName" class="form-label">Agenda</label>
             <input type="text" class="form-control @error('agenda') is-invalid @enderror" value="{{old('agenda')}}" id="firstName" name="agenda">
+            @error('agenda')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
           </div>
             <div class="mb-3">
               <label for="firstName" class="form-label">Date</label>

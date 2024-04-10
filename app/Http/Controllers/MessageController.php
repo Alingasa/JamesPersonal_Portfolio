@@ -51,7 +51,7 @@ class MessageController extends Controller
         //
         $data = $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|unique:messages',
             'subject' => 'required',
             'message' => 'required',
         ]);

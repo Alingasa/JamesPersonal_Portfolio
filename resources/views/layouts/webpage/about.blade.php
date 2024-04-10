@@ -1,3 +1,4 @@
+@foreach ($users as $user)
 <section id="about" class="about">
 <div class="about-me container">
 
@@ -47,3 +48,4 @@
     </div>
   </div>
 </div>
+@endforeach

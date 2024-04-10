@@ -33,6 +33,9 @@
           <div class="mb-3">
             <label for="email" class="form-label">Email</label>
             <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" autocomplete="email" autofocus>
+            @error('email')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>

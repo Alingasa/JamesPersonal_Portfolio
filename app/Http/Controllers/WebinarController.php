@@ -56,7 +56,7 @@ class WebinarController extends Controller
         //
         $data = $request->validate([
             'host_name' => 'required',
-            'agenda' => 'required',
+            'agenda' => 'required|unique:webinars',
             'date' => 'required',
         ]);
         

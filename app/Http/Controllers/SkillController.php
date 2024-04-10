@@ -48,7 +48,7 @@ class SkillController extends Controller
     {
         //
         $data = $request->validate([
-            'skill_name' => 'required',
+            'skill_name' => 'required|unique:skills',
             'percentage' => 'required',
         ]);
      if(empty(auth()->user()->role)){

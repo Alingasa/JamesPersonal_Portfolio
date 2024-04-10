@@ -57,18 +57,24 @@
     <form action="{{route('messages.store')}}" method="POST" class="php-email-form mt-4">
       @csrf
       <div class="row">
+        @if($errors->any())
+        @include('layouts.sweetalert.error')
+        @endif
         <div class="col-md-6 form-group">
-          <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+          <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}" placeholder="Your Name" required>
         </div>
         <div class="col-md-6 form-group mt-3 mt-md-0">
-          <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+          <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{old('email')}} placeholder="Your Email" required>
+          @error('email')
+          <p class="text-danger">{{$message}}</p>
+          @enderror
         </div>
       </div>
       <div class="form-group mt-3">
-        <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required>
+        <input type="text" class="form-control" name="subject" id="subject" value="{{old('subject')}}" placeholder="Subject" required>
       </div>
       <div class="form-group mt-3">
-        <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+        <textarea class="form-control" name="message"  rows="5" placeholder="Message" value="{{old('message')}}"  required></textarea>
       </div>
       <div class="my-3">
         <div class="loading">Loading</div>

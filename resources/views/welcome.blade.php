@@ -9,7 +9,7 @@
           
       @include('layouts.webpage.navbar')
      
-
+      @endforeach
   <!-- ======= About Section ======= -->
 
 
@@ -17,7 +17,7 @@
      @include('layouts.webpage.about')
     <!-- End About Me -->
 
-    @endforeach
+    
 
     <!-- ======= Skills  ======= -->
    {{-- @include('layouts.webpage.skills') --}}
@@ -36,6 +36,7 @@
     @include('layouts.webpage.interest')
   
     @endforeach
+    @include('layouts.webpage.webinar')
     </div>
     <!-- End Interests -->
 
@@ -72,7 +73,7 @@
   <!-- End Experiences Section -->
 
   <!-- ======= Webinar Section ======= -->
-   @include('layouts.webpage.webinar')
+  
   <!-- End Webinar Section -->
 
    <!-- ======= Blog Section ======= -->

@@ -18,6 +18,9 @@
           <div class="mb-3">
             <label for="firstName" class="form-label">Name</label>
             <input type="text" class="form-control @error('experience_name') is-invalid @enderror" id="firstName" value="{{old('experience_name')}}" name="experience_name" >
+            @error('experience_name')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Link</label>

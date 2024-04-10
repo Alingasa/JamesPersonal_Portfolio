@@ -14,6 +14,9 @@
           <div class="mb-3">
             <label for="firstName" class="form-label">Name</label>
             <input type="text" class="form-control @error('skill_name') is-invalid @enderror" id="firstName" value="{{old('skill_name')}}" name="skill_name">
+            @error('skill_name')
+            <p class="text-danger">{{$message}}</p>
+            @enderror
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Percentage</label>
