@@ -64,7 +64,7 @@
           <input type="text" name="name" class="form-control" id="name" value="{{old('name')}}" placeholder="Your Name" required>
         </div>
         <div class="col-md-6 form-group mt-3 mt-md-0">
-          <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{old('email')}} placeholder="Your Email" required>
+          <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" value="{{old('email')}}" placeholder="Your Email" required>
           @error('email')
           <p class="text-danger">{{$message}}</p>
           @enderror
