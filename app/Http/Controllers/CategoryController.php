@@ -33,9 +33,17 @@ class CategoryController extends Controller
         $data = $request->validate([
             'name' => 'required',
         ]);
-
-        Category::create($data);
-        return redirect()->route('blogs.index')->with('add_success', 'added successfully');
+       if(empty(auth()->user()->role)){
+        abort(404);
+       }else{
+         if(auth()->user()->role == 'admin'){
+            Category::create($data);
+            return redirect()->route('blogs.index')->with('add_success', 'added successfully');
+         }else{
+            abort(404);
+         }
+       }
+       
     }
 
     /**
@@ -44,6 +52,11 @@ class CategoryController extends Controller
     public function show(Category $category)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -52,6 +65,11 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -63,9 +81,19 @@ class CategoryController extends Controller
         $data = $request->validate([
             'name' => 'required',
         ]);
+        
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $category->update($data);
+                return redirect()->route('blogs.index')->with('update_success', 'added successfully');
+            }else{
+                abort(404);
+            }
 
-        $category->update($data);
-        return redirect()->route('blogs.index')->with('update_success', 'added successfully');
+        }
+       
     }
 
     /**
@@ -74,7 +102,16 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         //
-        $category->delete();
-        return redirect()->route('blogs.index')->with('delete', 'added successfully');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $category->delete();
+                return redirect()->route('blogs.index')->with('delete', 'added successfully');
+            }else{
+                abort(404);
+            }
+        }
+        
     }
 }

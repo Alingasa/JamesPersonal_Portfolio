@@ -13,11 +13,11 @@
           @csrf
           <div class="mb-3">
             <label for="firstName" class="form-label">Name</label>
-            <input type="text" class="form-control @error('skill_name') is-invalid @enderror" id="firstName" name="skill_name">
+            <input type="text" class="form-control @error('skill_name') is-invalid @enderror" id="firstName" value="{{old('skill_name')}}" name="skill_name">
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Percentage</label>
-            <input type="number" class="form-control @error('percentage') is-invalid @enderror" id="firstName" name="percentage">
+            <input type="number" class="form-control @error('percentage') is-invalid @enderror" id="firstName" value="{{old('percentage')}}" name="percentage">
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

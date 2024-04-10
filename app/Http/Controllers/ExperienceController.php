@@ -25,7 +25,11 @@ class ExperienceController extends Controller
     public function create()
     {
         //
-        return redirect()->route('experiences.index')->with('unauthorized', 'Unauthorized Access');
+       if(empty(auth()->user()->role)){
+        abort(404);
+       }else{
+        abort(404);
+       }
     }
 
     /**
@@ -49,10 +53,18 @@ class ExperienceController extends Controller
         $data['experience_image'] = null;
 
        }
+       if(empty(auth()->user()->role)){
+        abort(404);
+       }else{
+        if(auth()->user()->role == 'admin'){
 
-        Experience::create($data);
+            Experience::create($data);
+            return redirect()->route('experiences.index')->with('add_success', 'added! successfully');
+        }else{
+            abort(404);
+        }
+       }
         
-        return redirect()->route('experiences.index')->with('add_success', 'added! successfully');
     }
 
     /**
@@ -61,6 +73,13 @@ class ExperienceController extends Controller
     public function show(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+           }else{
+            
+                abort(404);
+            
+           }
     }
 
     /**
@@ -69,6 +88,13 @@ class ExperienceController extends Controller
     public function edit(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+           }else{
+            
+                abort(404);
+            
+           }
     }
 
     /**
@@ -89,9 +115,17 @@ class ExperienceController extends Controller
         } else {
             $data['experience_image'] = $experience->experience_image;
         }
-        
-        $experience->update($data);
-        return redirect()->route('experiences.index')->with('update_success', 'updated successfully');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $experience->update($data);
+                return redirect()->route('experiences.index')->with('update_success', 'updated successfully');
+            }else{
+                abort(404);
+            }
+        }
+       
     }
 
     /**
@@ -100,8 +134,14 @@ class ExperienceController extends Controller
     public function destroy(Experience $experience)
     {
         //
-        $experience->delete();
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $experience->delete();
         
-        return redirect()->route('experiences.index')->with('delete', 'deleted successfully');
+                return redirect()->route('experiences.index')->with('delete', 'deleted successfully');
+            }
+        }
     }
 }

@@ -21,19 +21,19 @@
         </div>
         <div class="mb-3">
           <label for="userImage" class="form-label">Image</label>
-          <input type="file" class="form-control @error('blog_image') is-invalide @enderror" id="userImage" name="blog_image" >
+          <input type="file" class="form-control @error('blog_image') is-invalide @enderror" id="userImage" name="blog_image" required>
         </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Title</label>
-            <input type="text" class="form-control @error('title') is-invalid @enderror" id="firstName" name="title" >
+            <input type="text" class="form-control @error('title') is-invalid @enderror" id="firstName" name="title" value="{{old('title')}}">
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Content</label>
-            <input class="form-control @error('content') is-invalid @enderror" id="description" name="content" rows="4" ></input>
+            <input class="form-control @error('content') is-invalid @enderror" id="description" value="{{old('content')}}" name="content" rows="4" ></input>
           </div>
           <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="4" ></input>
+            <input class="form-control @error('description') is-invalid @enderror" id="description" value="{{old('description')}}" name="description" rows="4" ></input>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

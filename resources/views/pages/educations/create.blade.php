@@ -13,19 +13,19 @@
           @csrf
           <div class="mb-3">
             <label for="firstName" class="form-label">Grade Level</label>
-            <input type="text" class="form-control @error('grade_level') is-invalid @enderror" id="firstName" name="grade_level" >
+            <input type="text" class="form-control @error('grade_level') is-invalid @enderror"value="{{old('grade_level')}}" id="firstName" name="grade_level" >
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">School Year</label>
-            <input type="text" class="form-control @error('school_year') is-invalid @enderror" id="firstName" name="school_year" >
+            <input type="text" class="form-control @error('school_year') is-invalid @enderror" value="{{old('school_year')}}" id="firstName" name="school_year" >
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">School Name</label>
-            <input type="text" class="form-control @error('school_name') is-invalid @enderror" id="firstName" name="school_name" >
+            <input type="text" class="form-control @error('school_name') is-invalid @enderror" value="{{old('school_name')}}" id="firstName" name="school_name" >
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Address</label>
-            <input type="text" class="form-control @error('address') is-invalid @enderror" id="firstName" name="address" >
+            <input type="text" class="form-control @error('address') is-invalid @enderror" value="{{old('address')}}" id="firstName" name="address" >
           </div>
           
           <button type="submit" class="btn btn-primary">Submit</button>

@@ -14,11 +14,19 @@ class BlogController extends Controller
     public function index()
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $blog = Blog::with('category')->simplePaginate(5);
+                $category = Category::simplePaginate(5);
+                $cat = Category::pluck('name', 'id');
+                return view('pages.blogs.index', compact('blog', 'category', 'cat'))->with('i', (request()->input('pages', 1) - 1)* 5);
+            }else{
+                abort(404);
+            }
+        }
 
-        $blog = Blog::with('category')->simplePaginate(5);
-        $category = Category::simplePaginate(5);
-        $cat = Category::pluck('name', 'id');
-        return view('pages.blogs.index', compact('blog', 'category', 'cat'))->with('i', (request()->input('pages', 1) - 1)* 5);
     }
 
     /**
@@ -27,7 +35,12 @@ class BlogController extends Controller
     public function create()
     {
         //
-        return redirect()->route('blogs.index')->with('unauthorized', 'Unauthorized Access');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
+        
     }
 
     /**
@@ -49,8 +62,17 @@ class BlogController extends Controller
             $imagePath = $image->store('image', 'public');
             $data['blog_image'] = $imagePath;
         }
-        Blog::create($data);
-       return redirect()->route('blogs.index')->with('add_success', 'added successfully');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                Blog::create($data);
+                return redirect()->route('blogs.index')->with('add_success', 'added successfully');
+            }else{
+                abort(404);
+            }
+        }
+        
     }
 
     /**
@@ -59,6 +81,11 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -67,6 +94,11 @@ class BlogController extends Controller
     public function edit(Blog $blog)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -90,9 +122,18 @@ class BlogController extends Controller
             $data['blog_image'] = $blog->blog_image;
         }
 
-        $blog->update($data);
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $blog->update($data);
 
-        return redirect()->route('blogs.index')->with('update_success', 'updated successfully');
+                return redirect()->route('blogs.index')->with('update_success', 'updated successfully');
+            }else{
+                abort(404);
+            }
+        }
+        
     }
 
     /**
@@ -101,7 +142,16 @@ class BlogController extends Controller
     public function destroy(Blog $blog)
     {
         //
-        $blog->delete();
-        return redirect()->route('blogs.index')->with('delete', 'added successfully');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $blog->delete();
+                return redirect()->route('blogs.index')->with('delete', 'added successfully');
+            }else{
+                abort(404);
+            }
+        }
+       
     }
 }

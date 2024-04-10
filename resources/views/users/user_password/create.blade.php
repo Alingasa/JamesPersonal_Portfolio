@@ -24,7 +24,7 @@
           </div>
             <div class="mb-3">
               <label for="firstName" class="form-label{{$users->id}}">Password</label>
-              <input type="password" class="form-control @error('password') is-invalid @enderror" id="firstName" name="password" placeholder="Enter New Password" >
+              <input type="password" class="form-control @error('password') is-invalid @enderror" id="firstName" value="{{old('password')}}" name="password" placeholder="Enter New Password" >
             </div>
             <div class="mb-3">
               <label for="firstName" class="form-label{{$users->id}}">Password</label>

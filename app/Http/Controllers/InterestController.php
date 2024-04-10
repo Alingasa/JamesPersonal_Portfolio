@@ -16,9 +16,14 @@ class InterestController extends Controller
     public function index()
     {
         //
-        $interest = Interest::simplePaginate(5);
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            $interest = Interest::simplePaginate(5);
 
-        return view('pages.interests.index', compact('interest'))->with('i', (request()->input('page', 1) -1 )* 5);
+            return view('pages.interests.index', compact('interest'))->with('i', (request()->input('page', 1) -1 )* 5);
+        }
+       
     }
 
     /**
@@ -27,7 +32,12 @@ class InterestController extends Controller
     public function create()
     {
         //
-        return redirect()->route('interests.index')->with('unauthorized', 'Unauthorized Access');
+       
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
         
     }
 
@@ -50,9 +60,17 @@ class InterestController extends Controller
             
             $data['image_logo'] = null;
         }
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                Interest::create($data);
+                return redirect()->route('interests.index')->with('add_success', 'User created successfully.');
+            }else{
+                abort(404);
+            }
+        }
         
-        Interest::create($data);
-        return redirect()->route('interests.index')->with('add_success', 'User created successfully.');
     }
 
     /**
@@ -60,7 +78,12 @@ class InterestController extends Controller
      */
     public function show(string $id)
     {
-        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
+        
     }
 
     /**
@@ -69,7 +92,11 @@ class InterestController extends Controller
     public function edit(string $id)
     {
         //
-        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -94,12 +121,17 @@ class InterestController extends Controller
             $data['image_logo'] = $avatarPath;
         } 
         
-        // else {
-           
-        //     $data['image_logo'] = $interest->image_logo;
-        // }
-        $interest->update($data);
-        return redirect()->route('interests.index')->with('update_success', 'User created successfully.');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $interest->update($data);
+                return redirect()->route('interests.index')->with('update_success', 'User created successfully.');
+            }else{
+                abort(404);
+            }
+        }
+       
     }
 
     /**
@@ -108,7 +140,16 @@ class InterestController extends Controller
     public function destroy(Interest $interest)
     {
         //
-        $interest->delete();
-        return redirect()->route('interests.index')->with('delete', 'User created successfully.');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $interest->delete();
+                return redirect()->route('interests.index')->with('delete', 'User created successfully.');
+            }else{
+                abort(404);
+            }
+        }
+       
     }
 }

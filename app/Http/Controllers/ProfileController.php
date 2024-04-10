@@ -16,6 +16,11 @@ class ProfileController extends Controller
     public function index()
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -24,6 +29,11 @@ class ProfileController extends Controller
     public function create()
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -32,6 +42,11 @@ class ProfileController extends Controller
     public function store(Request $request)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -40,6 +55,11 @@ class ProfileController extends Controller
     public function show(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -48,6 +68,11 @@ class ProfileController extends Controller
     public function edit(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -112,5 +137,10 @@ class ProfileController extends Controller
     public function destroy(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 }

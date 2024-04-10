@@ -58,29 +58,29 @@
                             @csrf
                          <div class="form-floating mb-3">
                             
-                             <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="floatingText" name="first_name" >
+                             <input type="text" class="form-control @error('first_name') is-invalid @enderror" value="{{old('first_name')}}" id="floatingText" name="first_name" >
                              <label for="floatingText">First Name</label>
        
                          </div>
                        
                          <div class="form-floating mb-3">
-                             <input type="text" class="form-control @error('middle_name') is-invalid @enderror"  id="floatingInput" name="middle_name" >
+                             <input type="text" class="form-control @error('middle_name') is-invalid @enderror" value="{{old('middle_name')}}" id="floatingInput" name="middle_name" >
                              <label for="floatingInput">Middle Name</label>
                          </div>
                          <div class="form-floating mb-3">
-                            <input type="text" class="form-control @error('last_name') is-invalid @enderror" id="floatingInput" name="last_name" >
+                            <input type="text" class="form-control @error('last_name') is-invalid @enderror" value="{{old('last_name')}}" id="floatingInput" name="last_name" >
                             <label for="floatingInput">Last Name</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="email" class="form-control @error('email') is-invalid @enderror" id="floatingInput" name="email" >
+                            <input type="email" class="form-control @error('email') is-invalid @enderror" value="{{old('email')}}" id="floatingInput" name="email" >
                             <label for="floatingInput">Email</label>
                         </div>
                          <div class="form-floating mb-4">
-                             <input type="password" class="form-control @error('password') is-invalid @enderror" id="floatingPassword" name="password" >
+                             <input type="password" class="form-control @error('password') is-invalid @enderror" value="{{old('password')}}" id="floatingPassword" name="password" >
                              <label for="floatingPassword">Password</label>
                          </div>
                          @error('password')
-                         {{$message}}
+                        <p class="text-danger">{{$message}}</p> 
                          @enderror
                          <div class="form-floating mb-4">
                             <input type="password" class="form-control @error('confirmation') is-invalid @enderror" id="floatingPassword" name="password_confirmation" >

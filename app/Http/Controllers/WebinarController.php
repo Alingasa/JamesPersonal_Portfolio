@@ -17,12 +17,18 @@ class WebinarController extends Controller
     public function index()
     {
         //
-        $webinar = webinar::simplePaginate(5);
-        foreach ($webinar as $webinars) {
-            $webinars->date = Carbon::parse($webinars->date)->isoFormat('MMMM DD, YYYY');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role){
+                $webinar = webinar::simplePaginate(5);
+                foreach ($webinar as $webinars) {
+                    $webinars->date = Carbon::parse($webinars->date)->isoFormat('MMMM DD, YYYY');
+                }
+                return view('pages.webinars.index', compact('webinar'))->with('i', (request()->input('page', 1) -1) * 5);
+            }
         }
-
-        return view('pages.webinars.index', compact('webinar'))->with('i', (request()->input('page', 1) -1) * 5);
+       
     }
 
     /**
@@ -31,7 +37,15 @@ class WebinarController extends Controller
     public function create()
     {
         //
-        return redirect()->route('webinars.index')->with('unauthorized', 'Unauthorized Access');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                abort(404);
+            }else{
+                return redirect()->back()->with('unauthorized', 'Unauthorized Access');
+            }
+        }
     }
 
     /**
@@ -51,9 +65,17 @@ class WebinarController extends Controller
             $imagePath = $image->store('img', 'public');
             $data['webinar_image'] = $imagePath;
         }
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                webinar::create($data);
+                return redirect()->route('webinars.index')->with('add_success', 'added succesfully');
+            }else{
 
-       webinar::create($data);
-       return redirect()->route('webinars.index')->with('add_success', 'added succesfully');
+            }
+        }
+      
     }
 
     /**
@@ -62,6 +84,15 @@ class WebinarController extends Controller
     public function show(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                abort(404);
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+        }
     }
 
     /**
@@ -70,6 +101,15 @@ class WebinarController extends Controller
     public function edit(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                abort(404);
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+        }
     }
 
     /**
@@ -90,9 +130,17 @@ class WebinarController extends Controller
         }else{
             $data['webinar_image'] = $webinar->webinar_image;
         }
-         $webinar->update($data);
+
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+        $webinar->update($data);
          return redirect()->route('webinars.index')->with('update_success', 'updated succesfully');
-    
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+        }
     }
 
     /**
@@ -101,7 +149,16 @@ class WebinarController extends Controller
     public function destroy(webinar $webinar): RedirectResponse
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
         $webinar->delete();
         return redirect()->route('webinars.index')->with('delete', 'deleted succesfully');
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+        }
+       
     }
 }

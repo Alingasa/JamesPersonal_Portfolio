@@ -30,25 +30,45 @@
                 </label>
             </div>
                   <div class="row">
-                    @if(auth()->user()->role == 'spectator' || auth()->user()->role == 'admin')
+                    @if(auth()->user()->role == 'admin')
                         <input type="hidden" class="form-control" id="description" name="role" value="{{Auth::user()->role}}" required>
                         <input type="hidden" class="form-control" id="description" name="description" value="{{Auth::user()->description}}"  required>
                       <div class="col-md-3 mb-3">
                           <label for="firstName" class="form-label"><strong>First Name</strong></label>
-                          <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" value="{{Auth::user()->first_name}}" placeholder="Enter your first name" >
+                          <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" value="{{Auth::user()->first_name}}" placeholder="Enter your first name" readonly >
                       </div>
                       <div class="col-md-3 mb-3">
                           <label for="middleName" class="form-label"><strong>Middle Name</strong></label>
-                          <input type="text" class="form-control  @error('middle_name') is-invalid @enderror" id="middle_name" name="middle_name" value="{{Auth::user()->middle_name}}" placeholder="Enter your middle name">
+                          <input type="text" class="form-control  @error('middle_name') is-invalid @enderror" id="middle_name" name="middle_name" value="{{Auth::user()->middle_name}}" placeholder="Enter your middle name" readonly>
                       </div>
                       <div class="col-md-3 mb-3">
                           <label for="lastName" class="form-label"><strong>Last Name</strong></label>
-                          <input type="text" class="form-control  @error('last_name') is-invalid @enderror" id="last_name" name="last_name" value="{{Auth::user()->last_name}}" placeholder="Enter your last name">
+                          <input type="text" class="form-control  @error('last_name') is-invalid @enderror" id="last_name" name="last_name" value="{{Auth::user()->last_name}}" placeholder="Enter your last name" readonly>
                       </div>
                       <div class="col-md-3 mb-3">
                           <label for="email" class="form-label"><strong>Email</strong></label>
-                          <input type="email" class="form-control  @error('email') is-invalid @enderror" id="email" name="email" value="{{Auth::user()->email}}" placeholder="Enter your email">
+                          <input type="email" class="form-control  @error('email') is-invalid @enderror" id="email" name="email" value="{{Auth::user()->email}}" placeholder="Enter your email" readonly>
                       </div>
+                      @endif
+                      @if(auth()->user()->role == 'spectator')
+                      <input type="hidden" class="form-control" id="description" name="role" value="{{Auth::user()->role}}" required>
+                      <input type="hidden" class="form-control" id="description" name="description" value="{{Auth::user()->description}}"  required>
+                    <div class="col-md-3 mb-3">
+                        <label for="firstName" class="form-label"><strong>First Name</strong></label>
+                        <input type="text" class="form-control @error('first_name') is-invalid @enderror" id="first_name" name="first_name" value="{{Auth::user()->first_name}}" placeholder="Enter your first name" >
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="middleName" class="form-label"><strong>Middle Name</strong></label>
+                        <input type="text" class="form-control  @error('middle_name') is-invalid @enderror" id="middle_name" name="middle_name" value="{{Auth::user()->middle_name}}" placeholder="Enter your middle name">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="lastName" class="form-label"><strong>Last Name</strong></label>
+                        <input type="text" class="form-control  @error('last_name') is-invalid @enderror" id="last_name" name="last_name" value="{{Auth::user()->last_name}}" placeholder="Enter your last name">
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="email" class="form-label"><strong>Email</strong></label>
+                        <input type="email" class="form-control  @error('email') is-invalid @enderror" id="email" name="email" value="{{Auth::user()->email}}" placeholder="Enter your email">
+                    </div> 
                       @endif
                       @if(auth()->user()->role == 'admin')
                       <div class="col-md-3 mb-3">
@@ -61,11 +81,11 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="email" class="form-label"><strong>Gender</strong></label>
-                        <input type="text" class="form-control  @error('gender') is-invalid @enderror" id="gender" name="gender" value="{{Auth::user()->gender}}" placeholder="Enter your Gender">
+                        <input type="text" class="form-control  @error('gender') is-invalid @enderror" id="gender" name="gender" value="{{Auth::user()->gender}}" placeholder="Enter your Gender" readonly>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="middleName" class="form-label"><strong>Status</strong></label>
-                        <input type="text" class="form-control  @error('status') is-invalid @enderror" id="middleName" name="status" value="{{Auth::user()->status}}" placeholder="Enter your Status">
+                        <input type="text" class="form-control  @error('status') is-invalid @enderror" id="middleName" name="status" value="{{Auth::user()->status}}" placeholder="Enter your Status" readonly>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="middleName" class="form-label"><strong>Religion</strong></label>
@@ -73,47 +93,47 @@
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="middleName" class="form-label"><strong>Phone Number</strong></label>
-                        <input type="text" class="form-control  @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="{{Auth::user()->phone_number}}" placeholder="Enter your Phone Number">
+                        <input type="text" class="form-control  @error('phone_number') is-invalid @enderror" id="phone_number" name="phone_number" value="{{Auth::user()->phone_number}}" placeholder="Enter your Phone Number" readonly>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="lastName" class="form-label"><strong>Address</strong></label>
-                        <input type="text" class="form-control  @error('address') is-invalid @enderror" id="lastName" name="address" value="{{Auth::user()->address}}" placeholder="Enter your Address">
+                        <input type="text" class="form-control  @error('address') is-invalid @enderror" id="lastName" name="address" value="{{Auth::user()->address}}" placeholder="Enter your Address" readonly>
                     </div>
                     <div class="col-md-3 mb-3">
                         <label for="middleName" class="form-label"><strong>Municipality</strong></label>
-                        <input type="text" class="form-control  @error('municipality') is-invalid @enderror" id="municipality" name="municipality" value="{{Auth::user()->municipality}}" placeholder="Enter your Municipality">
+                        <input type="text" class="form-control  @error('municipality') is-invalid @enderror" id="municipality" name="municipality" value="{{Auth::user()->municipality}}" placeholder="Enter your Municipality" readonly>
                     </div>
                 <div class="col-md-3 mb-3">
                     <label for="lastName" class="form-label"><strong>Province</strong></label>
-                    <input type="text" class="form-control  @error('province') is-invalid @enderror" id="province" name="province" value="{{Auth::user()->province}}" placeholder="Enter your Province">
+                    <input type="text" class="form-control  @error('province') is-invalid @enderror" id="province" name="province" value="{{Auth::user()->province}}" placeholder="Enter your Province" readonly>
                 </div>
                 <div class="col-md-3 mb-3">
                     <label for="email" class="form-label"><strong>Zip Code</strong></label>
-                    <input type="text" class="form-control  @error('zip_code') is-invalid @enderror" id="zip_code" name="zip_code" value="{{Auth::user()->zip_code}}" placeholder="Enter your Zip Code">
+                    <input type="text" class="form-control  @error('zip_code') is-invalid @enderror" id="zip_code" name="zip_code" value="{{Auth::user()->zip_code}}" placeholder="Enter your Zip Code" readonly>
                 </div>
             <div class="col-md-3 mb-3">
                 <label for="lastName" class="form-label"><strong>Facebook Url</strong></label>
-                <input type="text" class="form-control  @error('fb_url') is-invalid @enderror" id="fb_url" name="fb_url" value="{{Auth::user()->fb_url}}" placeholder="Enter your Facebook URL">
+                <input type="text" class="form-control  @error('fb_url') is-invalid @enderror" id="fb_url" name="fb_url" value="{{Auth::user()->fb_url}}" placeholder="Enter your Facebook URL" readonly>
             </div>
             <div class="col-md-3 mb-3">
                 <label for="email" class="form-label"><strong>Instagram Url</strong></label>
-                <input type="text" class="form-control  @error('instagram_url') is-invalid @enderror" id="email" name="instagram_url" value="{{Auth::user()->instagram_url}}" placeholder="Enter your Instagram URL">
+                <input type="text" class="form-control  @error('instagram_url') is-invalid @enderror" id="email" name="instagram_url" value="{{Auth::user()->instagram_url}}" placeholder="Enter your Instagram URL" readonly>
             </div>
             <div class="col-md-3 mb-3">
               <label for="middleName" class="form-label"><strong>Linked_In Url</strong></label>
-              <input type="text" class="form-control  @error('linkedin_url') is-invalid @enderror" id="middleName" name="linkedin_url" value="{{Auth::user()->linkedin_url}}" placeholder="Enter your Linkedin URL">
+              <input type="text" class="form-control  @error('linkedin_url') is-invalid @enderror" id="middleName" name="linkedin_url" value="{{Auth::user()->linkedin_url}}" placeholder="Enter your Linkedin URL" readonly>
           </div>
           <div class="col-md-3 mb-3">
             <label for="middleName" class="form-label"><strong>Youtube Url</strong></label>
-            <input type="text" class="form-control  @error('youtube_url') is-invalid @enderror" id="middleName" name="youtube_url" value="{{Auth::user()->youtube_url}}" placeholder="Enter your Youtube URL">
+            <input type="text" class="form-control  @error('youtube_url') is-invalid @enderror" id="middleName" name="youtube_url" value="{{Auth::user()->youtube_url}}" placeholder="Enter your Youtube URL" readonly>
         </div>
         <div class="col-md-3 mb-3">
             <label for="middleName" class="form-label"><strong>Passion</strong></label>
-            <input type="text" class="form-control  @error('passion') is-invalid @enderror" id="middleName" name="passion" value="{{Auth::user()->passion}}" placeholder="Enter your Passion">
+            <input type="text" class="form-control  @error('passion') is-invalid @enderror" id="middleName" name="passion" value="{{Auth::user()->passion}}" placeholder="Enter your Passion" readonly>
         </div>
         <div class="text-center mb-3">
                 <label for="description" class="form-label"><strong>Description</strong></label>
-                <textarea class="form-control  @error('description') is-invalid @enderror" id="description" name="description" rows="4" placeholder="Enter your Description">{{ Auth::user()->description }}</textarea>
+                <textarea class="form-control  @error('description') is-invalid @enderror" id="description" name="description" rows="4" placeholder="Enter your Description" readonly>{{ Auth::user()->description }}</textarea>
         </div>
                   </div>
               

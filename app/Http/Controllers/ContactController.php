@@ -13,9 +13,17 @@ class ContactController extends Controller
     public function index()
     {
         //
-        $contact = User::get()->where('role', 'admin');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $contact = User::get()->where('role', 'admin');
+                return view('pages.contacts.index', compact('contact'));
+            }else{
+                abort(404);
+            }
+        }
         
-        return view('pages.contacts.index', compact('contact'));
     }
 
     /**
@@ -24,6 +32,11 @@ class ContactController extends Controller
     public function create()
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -32,6 +45,11 @@ class ContactController extends Controller
     public function store(Request $request)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -40,6 +58,11 @@ class ContactController extends Controller
     public function show(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -69,20 +92,12 @@ class ContactController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
-        // return 'hahah';
-        // $data = $request->validate([
-        //     'fb_url' => 'required',
-        //     'instagram_url' => 'required',
-        //     'linkedin_url' => 'required',
-        //     'youtube_url' => 'required',
-        //     'email' => 'required',
-        //     'phone_number' => 'required',
-        // ]);
         
-        // if($data){
-        //     return dd('hohaha');
-        // }
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -91,5 +106,10 @@ class ContactController extends Controller
     public function destroy(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 }

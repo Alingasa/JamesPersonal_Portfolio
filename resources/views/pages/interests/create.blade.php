@@ -13,11 +13,11 @@
           @csrf
           <div class="mb-3">
             <label for="userImage" class="form-label">Choose Logo</label>
-            <input type="file" class="form-control" id="userImage" name="image_logo" >
+            <input type="file" class="form-control" id="userImage" name="image_logo" required>
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Name</label>
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="firstName" name="name" required>
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="firstName" value="{{old('name')}}" name="name" required>
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

@@ -15,8 +15,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        $user = User::simplePaginate(5);
-        return view('users.index', compact('user'))->with('i', (request()->input('page', 1) - 1) * 5);
+        
+        if(empty(auth()->user()->role)){
+            abort(404, 'Not Found!');
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $user = User::simplePaginate(5);
+                return view('users.index', compact('user'))->with('i', (request()->input('page', 1) - 1) * 5);
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+        }
+       
     }
 
     /**
@@ -25,8 +35,17 @@ class UserController extends Controller
     public function create()
     {
         //
-        $user = User::simplePaginate(5);
-        return view('users.user_password.index', compact('user'))->with('i', (request()->input('page', 1)- 1) * 5);
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+        if(auth()->user()->role == 'admin'){
+            $user = User::simplePaginate(5);
+            return view('users.user_password.index', compact('user'))->with('i', (request()->input('page', 1)- 1) * 5);
+        }else{
+            return redirect()->back()->with('unauthorized', 'Unable to connect');
+        }
+    }
+       
     }
 
     /**
@@ -53,11 +72,19 @@ class UserController extends Controller
        
             $data['avatar'] = null;
         }
+
+        if(empty(auth()->user()->role)){
+            abort(404, 'Not Found!');
+        }else {
+            if(auth()->user()->role == 'admin'){
+                User::create($data);
+                return redirect()->route('user.index')->with('add_success', 'User created successfully.');
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+            
+        }
         
-      
-        User::create($data);
-        
-        return redirect()->route('user.index')->with('add_success', 'User created successfully.');
         
         
     }
@@ -68,6 +95,15 @@ class UserController extends Controller
     public function show(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                abort(404);
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+        }
     }
 
     /**
@@ -80,9 +116,18 @@ class UserController extends Controller
             'password' => 'required',
         ]);
 
-        $user->update($data);
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $user->update($data);
 
-        return redirect()->route('user.create')->with('update_success', 'User created successfully.');
+                return redirect()->route('user.create')->with('update_success', 'User created successfully.');
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+        }
+       
     }
 
     /**
@@ -108,9 +153,19 @@ class UserController extends Controller
     
             $data['avatar'] = $user->avatar;
         }
-        $user->update($data);
-        return redirect()->route('user.index')->with('update_success', 'User created successfully.');
-        
+
+        if(empty(auth()->user()->role)){
+           abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $user->update($data);
+                return redirect()->route('user.index')->with('update_success', 'User created successfully.');
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+          
+        }
+     
     }
 
     /**
@@ -119,11 +174,19 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
-        $user->delete();
-        
-        return redirect()->route('user.index')
-        ->with('delete','User deleted successfully');
+        if(empty(auth()->user()->role)){
 
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $user->delete();
+        
+                return redirect()->route('user.index')
+                ->with('delete','User deleted successfully');
+            }else{
+                return redirect()->back()->with('unauthorized', "Unable to connect");
+            }
+        
+        }
     }
 
 }

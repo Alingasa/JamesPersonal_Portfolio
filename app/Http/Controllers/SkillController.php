@@ -16,8 +16,14 @@ class SkillController extends Controller
     public function index()
     {
         //
-        $skill = Skill::simplePaginate(5);
-        return  view('pages.skills.index', compact('skill'))->with('i', (request()->input('pages', 1)- 1) * 5);
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role){
+                $skill = Skill::simplePaginate(5);
+                return  view('pages.skills.index', compact('skill'))->with('i', (request()->input('pages', 1)- 1) * 5);
+        }
+        }  
     }
 
     /**
@@ -26,7 +32,13 @@ class SkillController extends Controller
     public function create()
     {
         //
-        return redirect()->route('skills.index')->with('unauthorized', 'Unauthorized Access');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role){
+                abort(404);
+            }
+        }
     }
 
     /**
@@ -39,9 +51,17 @@ class SkillController extends Controller
             'skill_name' => 'required',
             'percentage' => 'required',
         ]);
-     
-        Skill::create($data);
+     if(empty(auth()->user()->role)){
+        abort(404);
+     }else{
+        if(auth()->user()->role == 'admin'){
+            Skill::create($data);
         return redirect()->route('skills.index')->with('add_success', 'added successfully');
+        }else{
+            return redirect()->back()->with('unauthorized', 'Unable to connect');
+        }
+     }
+        
     }
 
     /**
@@ -50,6 +70,13 @@ class SkillController extends Controller
     public function show(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role){
+                abort(404);
+            }
+        }
     }
 
     /**
@@ -58,6 +85,13 @@ class SkillController extends Controller
     public function edit(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role){
+                abort(404);
+            }
+        }
     }
 
     /**
@@ -70,9 +104,17 @@ class SkillController extends Controller
             'skill_name' => 'required',
             'percentage' => 'required',
         ]);
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $skill->update($data);
+                return redirect()->route('skills.index')->with('update_success', 'updated successfully!');
+            }else{
+                return redirect()->back()->with('unauthorized', 'Unable to connect');
+            }
+        }
 
-        $skill->update($data);
-        return redirect()->route('skills.index')->with('update_success', 'updated successfully!');
     }
 
     /**
@@ -80,8 +122,17 @@ class SkillController extends Controller
      */
     public function destroy(Skill $skill): RedirectResponse
     {
-       $skill->delete();
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $skill->delete();
        
-       return redirect()->route('skills.index')->with('delete', 'deleted successfully');
+                return redirect()->route('skills.index')->with('delete', 'deleted successfully');
+            }else{
+                return redirect()->back()->with('unauthorized', 'Unable to connect');
+            }
+        }
+       
     }
 }

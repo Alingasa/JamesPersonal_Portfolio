@@ -13,9 +13,18 @@ class MessageController extends Controller
     public function index()
     {
         //
-        $message = Message::get();
+        if(empty(auth()->user()->role)){
+            abort(404, 'Not Found!');
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $message = Message::get();
        
-        return view('pages.messages.index', compact('message'))->with('i');
+                return view('pages.messages.index', compact('message'))->with('i');
+            }else{
+                return redirect()->back()->with('unauthorized', 'Unable to Access');
+            }
+        }
+        
 
     }
 
@@ -25,6 +34,13 @@ class MessageController extends Controller
     public function create()
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404, 'Not Found!');
+        }else{
+            if(auth()->user()->role){
+                abort(404);
+            }
+        }
     }
 
     /**
@@ -39,9 +55,11 @@ class MessageController extends Controller
             'subject' => 'required',
             'message' => 'required',
         ]);
-
-       Message::create($data);
-       return redirect()->to('http://jamesalingasa.webactivities.online/')->with('sent_success', 'message sent successfully');
+        
+        Message::create($data);
+       return redirect()->to('http://localhost:8000/')->with('sent_success', 'message sent successfully');
+      
+       
     }
 
     /**
@@ -50,6 +68,13 @@ class MessageController extends Controller
     public function show(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404, 'Not Found!');
+        }else{
+            if(auth()->user()->role){
+               abort(404);
+            }
+        }
     }
 
     /**
@@ -58,6 +83,13 @@ class MessageController extends Controller
     public function edit(string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404, 'Not Found!');
+        }else{
+            if(auth()->user()->role){
+               abort(404);
+            }
+        }
     }
 
     /**
@@ -66,6 +98,13 @@ class MessageController extends Controller
     public function update(Request $request, string $id)
     {
         //
+        if(empty(auth()->user()->role)){
+            abort(404, 'Not Found!');
+        }else{
+            if(auth()->user()->role){
+               abort(404);
+            }
+        }
     }
 
     /**
@@ -74,7 +113,16 @@ class MessageController extends Controller
     public function destroy(Message $message)
     {
         //
-        $message->delete();
-        return redirect()->route('messages.index')->with('delete', 'deleted successfully');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                $message->delete();
+                return redirect()->route('messages.index')->with('delete', 'deleted successfully');
+            }else{
+                return redirect()->back()->with('unauthorized', 'Unable to Access');
+            }
+        }
+      
     }
 }

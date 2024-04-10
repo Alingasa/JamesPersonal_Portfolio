@@ -13,8 +13,13 @@ class EducationController extends Controller
     public function index()
     {
         //
-        $education = Education::simplePaginate(5);
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            $education = Education::simplePaginate(5);
         return view('pages.educations.index', compact('education'))->with('i', (request()->input('page', 1)- 1) * 5);
+        }
+        
     }
 
     /**
@@ -23,7 +28,11 @@ class EducationController extends Controller
     public function create()
     {
         //
-        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -39,8 +48,18 @@ class EducationController extends Controller
             'address' => 'required',
         ]);
 
-        Education::create($data);
-        return redirect()->route('education.index')->with('add_success', 'added successfully!');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            if(auth()->user()->role == 'admin'){
+                Education::create($data);
+                return redirect()->route('education.index')->with('add_success', 'added successfully!');
+            }else{
+                abort(404);
+            }
+       
+        }
+        
     }
 
     /**
@@ -49,7 +68,11 @@ class EducationController extends Controller
     public function show(Education $education)
     {
         //
-        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -58,7 +81,11 @@ class EducationController extends Controller
     public function edit(Education $education)
     {
         //
-        return redirect()->route('education.index')->with('unauthorized', 'Unauthorized Access');
+        if(empty(auth()->user()->role)){
+            abort(404);
+        }else{
+            abort(404);
+        }
     }
 
     /**
@@ -73,9 +100,17 @@ class EducationController extends Controller
             'school_name' => 'required',
             'address' => 'required',
         ]);
-       
-        $education->update($data);
-        return redirect()->route('education.index')->with('update_success', 'updated successfully!');
+       if(empty(auth()->user()->role)){
+        abort(404);
+       }else{
+        if(auth()->user()->role == 'admin'){
+            $education->update($data);
+            return redirect()->route('education.index')->with('update_success', 'updated successfully!');
+        }else{
+            abort(404);
+        }
+       }
+        
     }
 
     /**
@@ -84,7 +119,16 @@ class EducationController extends Controller
     public function destroy(Education $education)
     {
         //
-        $education->delete();
+        if(empty(auth()->user()->role)){
+            abort(404);
+           }else{
+            if(auth()->user()->role == 'admin'){
+                $education->delete();
         return redirect()->route('education.index')->with('delete' , 'deleted successfully!');
+            }else{
+
+            }
+           }
+       
     }
 }

@@ -10,16 +10,6 @@ class CheckRole
 {
     public function handle(Request $request, Closure $next, $role)
     {
-        if (!$request->user()) {
-            return redirect('/login');
-        }
-
-       
-        if ($request->user()->role !== $role) {
-           
-            return redirect()->back()->with('unauthorized', 'Unauthorized Acess');
-        }
-
         return $next($request);
     }
 }

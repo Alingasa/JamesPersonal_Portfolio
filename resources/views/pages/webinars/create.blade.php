@@ -17,15 +17,15 @@
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Host Name</label>
-            <input type="text" class="form-control @error('host_name') is-invalid @enderror" id="firstName" name="host_name">
+            <input type="text" class="form-control @error('host_name') is-invalid @enderror" value="{{old('host_name')}}" id="firstName" name="host_name">
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Agenda</label>
-            <input type="text" class="form-control @error('agenda') is-invalid @enderror" id="firstName" name="agenda">
+            <input type="text" class="form-control @error('agenda') is-invalid @enderror" value="{{old('agenda')}}" id="firstName" name="agenda">
           </div>
             <div class="mb-3">
               <label for="firstName" class="form-label">Date</label>
-              <input type="date" class="form-control @error('date') is-invalid @enderror" id="firstName" name="date">
+              <input type="date" class="form-control @error('date') is-invalid @enderror" value="{{old('date')}}" id="firstName" name="date">
             </div>
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

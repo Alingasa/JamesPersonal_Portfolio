@@ -13,15 +13,15 @@
           @csrf
           <div class="mb-3">
             <label for="userImage" class="form-label">Choose Image</label>
-            <input type="file" class="form-control @error('experience_name') is-invalid @enderror" id="userImage" name="experience_image" >
+            <input type="file" class="form-control @error('experience_name') is-invalid @enderror" id="userImage" name="experience_image" required>
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Name</label>
-            <input type="text" class="form-control @error('experience_name') is-invalid @enderror" id="firstName" name="experience_name" >
+            <input type="text" class="form-control @error('experience_name') is-invalid @enderror" id="firstName" value="{{old('experience_name')}}" name="experience_name" >
           </div>
           <div class="mb-3">
             <label for="firstName" class="form-label">Link</label>
-            <input type="text" class="form-control @error('experience_link') is-invalid @enderror" id="firstName" name="experience_link" >
+            <input type="text" class="form-control @error('experience_link') is-invalid @enderror" id="firstName" value="{{old('experience_link')}}" name="experience_link" >
           </div>
           <button type="submit" class="btn btn-primary">Submit</button>
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
