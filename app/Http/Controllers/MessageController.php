@@ -57,7 +57,7 @@ class MessageController extends Controller
         ]);
         
         Message::create($data);
-       return redirect()->to('http://localhost:8000/')->with('sent_success', 'message sent successfully');
+       return redirect()->to('https://jamesalingasa.online/')->with('sent_success', 'message sent successfully');
       
        
     }
