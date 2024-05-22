@@ -47,6 +47,9 @@ Route::resource('webinars', WebinarController::class);
 Route::resource('category', CategoryController::class);
 Route::resource('education', EducationController::class);
 
+// Route::middleware('auth:web')->group(function(){
+
+// });
 
 Route::middleware('role:admin')->group(function () {
   Route::resource('user', UserController::class);
